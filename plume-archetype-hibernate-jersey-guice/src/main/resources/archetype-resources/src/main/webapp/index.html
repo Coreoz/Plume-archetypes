@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="app/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="app/ressources/css/style.css" rel="stylesheet"/>
+        
+        <title>Angularjs ${artifactId} Application</title>
+        
+        <!--[if lt IE 9]>
+	        <script src="app/vendor/ie/es5-shim.min.js"></script>
+	        <script src="app/vendor/ie/json3.min.js"></script>
+	        <script src="app/vendor/ie/html5shiv.min.js"></script>
+	        <script src="app/vendor/ie/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body ng-app="${artifactId}">
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a>.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container" ng-view></div>
+
+        <script src="app/vendor/angular/angular.min.js"></script>
+        <script src="app/vendor/angular-route/angular-route.min.js"></script>
+        <script src="app/vendor/angular-resource/angular-resource.min.js"></script>
+        <script src="app/vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="app/ressources/js/console-ie.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/config/routing.js"></script>
+        
+        <!-- Controllers -->
+        <script src="app/src/controllers/helloController.js"></script>
+        
+        <!-- Services -->
+        <script src="app/src/services/helloService.js"></script>
+    </body>
+</html>
