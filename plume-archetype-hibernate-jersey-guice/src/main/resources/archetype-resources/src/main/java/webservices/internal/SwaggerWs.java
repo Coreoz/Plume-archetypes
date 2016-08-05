@@ -23,6 +23,7 @@ public class SwaggerWs {
 		beanConfig.setResourcePackage("${package}.webservices.api");
 		beanConfig.setBasePath("/api");
 		beanConfig.setTitle("API ${artifactId}");
+		// this is not only a setter, it also starts the Swagger classes analyzing process 
 		beanConfig.setScan(true);
 
 		this.swagger = beanConfig.getSwagger();
