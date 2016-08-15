@@ -26,7 +26,7 @@ public class JerseyConfig extends ResourceConfig {
 
 	@Inject
 	public JerseyConfig(ServiceLocator serviceLocator) {
-        packages("${package}.webservices");
+		packages("${package}.webservices");
 
 		// filters configuration
 		// handle errors and exceptions

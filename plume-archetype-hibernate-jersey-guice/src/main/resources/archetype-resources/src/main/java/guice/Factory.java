@@ -11,7 +11,11 @@ import com.google.inject.Stage;
  */
 public class Factory {
 	
-	private final static Injector injector = Guice.createInjector(Stage.PRODUCTION, new GuiceConfModule(), new GuiceJacksonModule());
+	private final static Injector injector = Guice.createInjector(
+			Stage.PRODUCTION,
+			new GuiceConfModule(),
+			new GuiceJacksonModule()
+		);
 	
 	public final static Injector injector() {
 		return injector;
