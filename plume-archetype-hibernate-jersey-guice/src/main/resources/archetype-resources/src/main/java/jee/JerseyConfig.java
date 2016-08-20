@@ -21,7 +21,7 @@ import com.coreoz.plume.jersey.java8.TimeParamProvider;
  * Jersey configuration
  */
 public class JerseyConfig extends ResourceConfig {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(JerseyConfig.class);
 
 	@Inject
@@ -33,9 +33,13 @@ public class JerseyConfig extends ResourceConfig {
 		register(WsResultExceptionMapper.class);
 		// to debug web-service requests
 		// register(LoggingFilter.class);
-		
+
 		// java 8
 		register(TimeParamProvider.class);
+
+		// WADL is like swagger for jersey
+		// by default it should be disabled to prevent leaking API documentation
+		property("jersey.config.server.wadl.disableWadl", true);
 
 		// jackson mapper configuration
 		JacksonJaxbJsonProvider provider = new JacksonJaxbJsonProvider();
