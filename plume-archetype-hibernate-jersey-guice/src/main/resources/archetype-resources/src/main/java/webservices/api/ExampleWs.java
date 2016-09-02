@@ -17,7 +17,7 @@ import ${package}.services.configuration.ConfigurationService;
 import ${package}.webservices.api.beans.Test;
 
 @Path("/example")
-@Api(value = "Manage exemple web-services")
+@Api("Manage exemple web-services")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Singleton
@@ -32,7 +32,7 @@ public class ExampleWs {
 
 	@GET
 	@Path("/test/{name}")
-	@ApiOperation(value = "Example web-service")
+	@ApiOperation("Example web-service")
 	public Test test(@ApiParam(required = true) @PathParam("name") String name) {
 		return new Test("hello " + name + "\n" + configurationService.hello());
 	}
