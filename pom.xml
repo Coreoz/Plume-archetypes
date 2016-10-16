@@ -25,6 +25,15 @@
 		</license>
 	</licenses>
 
+	<developers>
+		<developer>
+			<name>Aurélien Manteaux</name>
+			<email>amanteaux@coreoz.com</email>
+			<organization>Coreoz</organization>
+			<organizationUrl>http://coreoz.com/</organizationUrl>
+		</developer>
+	</developers>
+
 	<scm>
 		<developerConnection>scm:git:git@github.com:Coreoz/Plume-archetypes.git</developerConnection>
 		<connection>scm:git:git@github.com:Coreoz/Plume-archetypes.git</connection>
@@ -117,6 +126,7 @@
 					<useReleaseProfile>false</useReleaseProfile>
 					<releaseProfiles>release</releaseProfiles>
 					<goals>deploy</goals>
+					<tagNameFormat>@{project.version}</tagNameFormat>
 				</configuration>
 			</plugin>
 		</plugins>
