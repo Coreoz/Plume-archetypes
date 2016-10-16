@@ -4,13 +4,6 @@
 
 	<fileSets>
 
-		<fileSet filtered="false" encoding="UTF-8">
-			<directory>src/main/webapp/app/vendor</directory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</fileSet>
-
 		<fileSet filtered="true" packaged="true" encoding="UTF-8">
 			<directory>src/main/java</directory>
 			<includes>
