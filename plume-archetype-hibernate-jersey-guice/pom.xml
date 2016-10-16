@@ -10,8 +10,8 @@
 
 	<artifactId>plume-archetype-hibernate-jersey-guice</artifactId>
 	<packaging>maven-archetype</packaging>
-	<name>Plume archetype with hibernate, jersey and Guice</name>
-	<description>Boostrap a project with hibernate, jersey and Guice</description>
+	<name>Plume archetype with Hibernate, Jersey and Guice</name>
+	<description>Bootstrap a project with Hibernate, Jersey and Guice</description>
 
 	<build>
 		<extensions>
