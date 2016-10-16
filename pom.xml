@@ -60,6 +60,7 @@
 
 	<modules>
 		<module>plume-archetype-hibernate-jersey-guice</module>
+		<module>plume-archetype-querydsl-jersey-guice</module>
 	</modules>
 
 	<profiles>
