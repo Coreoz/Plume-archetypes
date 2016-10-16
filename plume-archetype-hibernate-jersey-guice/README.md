@@ -1,6 +1,11 @@
 Plume Maven archetype with Hibernate, Jersey and Guice
 ======================================================
 
+Note that even though the Hibernate Plume package is maintained, it is not a priority project
+for the Plume Framework team.
+If you are starting a new project, you should consider using
+the [Querydsl Plume package](../plume-archetype-querydsl-jersey-guice) instead.
+
 Configuring your IDE
 --------------------
 1. Install [Lombok](https://projectlombok.org/): http://jnb.ociweb.com/jnb/jnbJan2010.html#installation
