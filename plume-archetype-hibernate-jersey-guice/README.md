@@ -16,7 +16,7 @@ https://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM
 Getting started
 ---------------
 1. Create a project with the
-[Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.htm) archetype,
+[Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) archetype,
 execute the command:
 `mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-hibernate-jersey-guice -DarchetypeVersion=1.0.0-SNAPSHOT`
 2. Setup your database connector in the `pom.xml` file (look for the "PUT YOUR DATABASE CONNECTOR HERE" comment :)
@@ -24,9 +24,10 @@ execute the command:
 If you are using MySQL you should uncomment all the line beginning with `db`,
 else uncomment them anyway and use the links provided in the configuration file
 to replace the MySQL configuration to your database need.
-4. Run the project on Tomcat or any servlet container you like.
+4. While you are editing the `application.conf` file, change the Swagger credentials
+5. Run the project on Tomcat or any servlet container you like.
 If you are willing to use Tomcat, use either the latest version available or a version that support Java 8.
 You should also configure Tomcat to remove the context path on your application.
 If you don't remove the context path, you will need to update the end of swagger URL provided
 in the `index.html` file to add the context path.
-5. Go to <http://localhost:8080>
+6. Go to <http://localhost:8080>
