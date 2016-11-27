@@ -4,7 +4,7 @@
 
 	<requiredProperties>
 		<requiredProperty key="plume-version">
-			<defaultValue>1.0.0-beta4</defaultValue>
+			<defaultValue>1.0.0-beta6</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 
