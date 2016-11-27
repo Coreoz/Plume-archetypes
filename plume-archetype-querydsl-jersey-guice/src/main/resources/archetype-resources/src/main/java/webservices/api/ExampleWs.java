@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 import ${package}.services.configuration.ConfigurationService;
-import ${package}.webservices.api.beans.Test;
+import ${package}.webservices.api.data.Test;
 
 @Path("/example")
 @Api("Manage exemple web-services")
