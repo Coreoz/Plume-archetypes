@@ -1,4 +1,4 @@
-package ${package}.webservices.api.beans;
+package ${package}.webservices.api.data;
 
 public class Test {
 
