@@ -147,14 +147,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- to use filtres/servlets... -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-
 		<!-- unit testing -->
 		<dependency>
 			<groupId>junit</groupId>
