@@ -52,7 +52,7 @@ public class GrizzlySetup {
 		httpServer.getServerConfiguration().addHttpHandler(webJarHandler, "/webjars/");
 
 		// static resources
-		HttpHandler httpHandler = new CLStaticHttpHandler(
+		CLStaticHttpHandler httpHandler = new CLStaticHttpHandler(
 			GrizzlySetup.class.getClassLoader(),
 			"/statics/"
 		);
