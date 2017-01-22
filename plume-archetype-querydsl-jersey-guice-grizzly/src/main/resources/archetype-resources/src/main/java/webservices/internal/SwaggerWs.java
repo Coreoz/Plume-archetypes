@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.common.base.Throwables;
 
 import ${package}.services.configuration.ConfigurationService;
 
@@ -43,7 +42,7 @@ public class SwaggerWs {
 		try {
 			this.swaggerDefinition = Json.mapper().writeValueAsString(swagger);
 		} catch (JsonProcessingException e) {
-			throw Throwables.propagate(e);
+			throw new RuntimeException(e);
 		}
 
 		// require authentication to access the API documentation
