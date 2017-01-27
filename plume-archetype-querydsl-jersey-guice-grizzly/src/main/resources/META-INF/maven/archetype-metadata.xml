@@ -3,8 +3,8 @@
 <archetype-descriptor name="plume-archetype-hibernate-jersey-guice">
 
 	<requiredProperties>
-		<requiredProperty key="plume-version">
-			<defaultValue>1.0.0-SNAPSHOT</defaultValue>
+		<requiredProperty key="plume-dependencies-version">
+			<defaultValue>1.0.0-rc1</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 
