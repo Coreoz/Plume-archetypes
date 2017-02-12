@@ -7,16 +7,16 @@ This repository reference Maven archetypes for [Plume Framework](https://github.
 Archetypes
 ----------
 
+- [Querydsl with Jersey, Guice and Grizzly](plume-archetype-querydsl-jersey-guice-grizzly/)
 - [Querydsl with Jersey and Guice](plume-archetype-querydsl-jersey-guice/)
 - [Hibernate with Jersey and Guice](plume-archetype-hibernate-jersey-guice/)
-
 
 Getting started
 ---------------
 
 There are many options you can choose when using Plume Framework.
 If you do not have time to review these options, just choose
-[Querydsl/Jersey/Guice](plume-archetype-querydsl-jersey-guice/),
+[Querydsl/Jersey/Guice/Grizzly](plume-archetype-querydsl-jersey-guice-grizzly/),
 it is the more common option.
 
 Packages with Jersey include a [Swagger](http://swagger.io/) endpoint,
