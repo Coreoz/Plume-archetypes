@@ -44,6 +44,7 @@ you can disable the Querydsl module:
 comment the line `install(new GuiceQuerydslModule());` in the `ApplicationModule` class.
 
 If you want to completly get rid of the database component:
+
 1. Remove the line `install(new GuiceQuerydslModule());` in the `ApplicationModule` class,
 2. Remove the package `db` in your project,
 3. Remove the dependencies `plume-db-querydsl` and `plume-db-querydsl-codegen` in the `pom.xml` file.
