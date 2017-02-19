@@ -4,7 +4,7 @@ Plume Maven archetype with Hibernate, Jersey and Guice
 Note that even though the Hibernate Plume package is maintained, it is not a priority project
 for the Plume Framework team.
 If you are starting a new project, you should consider using
-the [Querydsl Plume package](../plume-archetype-querydsl-jersey-guice) instead.
+the [Querydsl Plume package](../plume-archetype-querydsl-jersey-guice-grizzly) instead.
 
 Configuring your IDE
 --------------------
@@ -18,7 +18,7 @@ Getting started
 1. Create a project with the
 [Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) archetype,
 execute the command:
-`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-hibernate-jersey-guice -DarchetypeVersion=1.0.0-SNAPSHOT`
+`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-hibernate-jersey-guice -DarchetypeVersion=1.0.0-rc3`
 2. Setup your database connector in the `pom.xml` file (look for the "PUT YOUR DATABASE CONNECTOR HERE" comment :)
 3. Setup your database connection parameters in the `application.conf` file.
 If you are using MySQL you should uncomment all the line beginning with `db`,
