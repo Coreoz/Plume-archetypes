@@ -45,10 +45,11 @@ public class GrizzlySetup {
 		httpServer.getServerConfiguration().setDefaultErrorPageGenerator(new GrizzlyErrorPageHandler());
 
 		// webjars for swagger ui
-		HttpHandler webJarHandler = new CLStaticHttpHandler(
+		CLStaticHttpHandler webJarHandler = new CLStaticHttpHandler(
 			GrizzlySetup.class.getClassLoader(),
 			"META-INF/resources/webjars/"
 		);
+		webJarHandler.setFileCacheEnabled(false);
 		httpServer.getServerConfiguration().addHttpHandler(webJarHandler, "/webjars/");
 
 		// static resources
