@@ -49,3 +49,9 @@ If you want to completly get rid of the database component:
 2. Remove the package `db` in your project,
 3. Remove the dependencies `plume-db-querydsl` and `plume-db-querydsl-codegen` in the `pom.xml` file.
 
+Deploying
+---------
+Currently a zip with created with [play2-maven-plugin](https://github.com/play2-maven-plugin/play2-maven-plugin).
+That is a quick and dirty configuration to enables to package a zip with the commande `mvn package`.
+To configure a cleaner build, [Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/)
+should be use instead.

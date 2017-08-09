@@ -37,29 +37,29 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-			<!-- single jar executable with all dependencies -->
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.0.0</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
 				<configuration>
 					<archive>
 						<manifest>
 							<mainClass>${package}.WebApplication</mainClass>
 						</manifest>
 					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<finalName>${project.artifactId}-${project.version}</finalName>
-					<appendAssemblyId>false</appendAssemblyId>
 				</configuration>
+			</plugin>
+			<!-- build a zip with all the dependencies and starting scripts -->
+			<plugin>
+				<groupId>com.google.code.play2-maven-plugin</groupId>
+				<artifactId>play2-maven-plugin</artifactId>
+				<version>1.0.0-beta6</version>
 				<executions>
 					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
 						<goals>
-							<goal>single</goal>
+							<goal>dist</goal>
 						</goals>
+						<phase>package</phase>
 					</execution>
 				</executions>
 			</plugin>
