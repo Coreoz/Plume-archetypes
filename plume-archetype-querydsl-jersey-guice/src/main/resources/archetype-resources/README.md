@@ -21,7 +21,7 @@ If you have any doubt, check out the [configuration documentation](https://githu
 Database
 --------
 To generate classes corresponding to the database tables,
-you can run the `${package}.db.QuerydslGenerator`.
+you can run the `${package}.db.QuerydslGenerator.main()` method.
 Before the first run, do not forget to configure:
 - The `TABLES_PREFIX` constant in `QuerydslGenerator`, to match your tables prefix.
 For example, if your table are named `abc_film` and `abc_actor`, then your prefix will be `abc_`
@@ -42,8 +42,8 @@ More modules
 - [Plume File](https://github.com/Coreoz/Plume-file/tree/master/plume-file-core): manage and serve files,
 - [Plume File Gallery](https://github.com/Coreoz/Plume-file/tree/master/plume-file-gallery): manage medias galleries.
 
-To see most of these modules work together,
-check your the [demo project](https://github.com/Coreoz/Plume-demo/tree/master/plume-demo-full-guice-jersey).
+Check the [demo project](https://github.com/Coreoz/Plume-demo/tree/master/plume-demo-full-guice-jersey)
+to see an example with these modules.
 
 Deploying to production
 -----------------------

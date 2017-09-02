@@ -20,7 +20,7 @@ If you have any doubt, check out the [configuration documentation](https://githu
 Database
 --------
 To generate classes corresponding to the database tables,
-you can run the `${package}.db.QuerydslGenerator`.
+you can run the `${package}.db.QuerydslGenerator.main()` method.
 Before the first run, do not forget to configure:
 - The `TABLES_PREFIX` constant in `QuerydslGenerator`, to match your tables prefix.
 For example, if your table are named `abc_film` and `abc_actor`, then your prefix will be `abc_`
@@ -41,20 +41,19 @@ More modules
 - [Plume File](https://github.com/Coreoz/Plume-file/tree/master/plume-file-core): manage and serve files,
 - [Plume File Gallery](https://github.com/Coreoz/Plume-file/tree/master/plume-file-gallery): manage medias galleries.
 
-To see most of these modules work together,
-check your the [demo project](https://github.com/Coreoz/Plume-demo/tree/master/plume-demo-full-guice-jersey).
+Check the [demo project](https://github.com/Coreoz/Plume-demo/tree/master/plume-demo-full-guice-jersey)
+to see an example with these modules.
 
 Deploying to production
 -----------------------
-In the default mode, when `mvn package` is executed, a zip files will be generated.
+In the default mode, when `mvn package` is executed, a zip files is generated.
 This file contains all the projects jar files and startup BAT and Bash files.
 These startup files will not work since they are built only for Play Framework.
 
-With `appserver` you can use `export SERVER=javazip`.
-
+If you are using `appserver` you can use `export SERVER=javazip`, it will correctly build and launch the project.
 If not there are 3 solutions:
 - switch back to the WAR file generation: see the [Plume War archetype](../plume-archetype-querydsl-jersey-guice),
-- create a maven plugin like the `play2-maven-plugin` that produce Plume compatible startup scripts (if you choose that option, please share your work :),
+- create a maven plugin like `play2-maven-plugin` that produce Plume compatible startup scripts (if you choose this option, please share your work :),
 - replace in the `pom.xml` file the `play2-maven-plugin` plugin by
 ```xml
 <!-- single jar executable with all dependencies -->
@@ -87,5 +86,5 @@ If not there are 3 solutions:
 With this solution, `mvn package` will produce an executable jar file.
 Note that this last solution may produce side effects: service loader files and other files 
 that share the same name can be overriden.
-However all Plume modules will works as expected with this solution.
+However all Plume modules will work as expected with this solution.
 
