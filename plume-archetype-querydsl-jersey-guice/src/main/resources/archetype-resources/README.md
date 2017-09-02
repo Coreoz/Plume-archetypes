@@ -10,7 +10,8 @@ Install [Lombok](https://projectlombok.org/): http://jnb.ociweb.com/jnb/jnbJan20
 
 Launching the server
 --------------------
-Just run the `${package}.WebApplication` class, you can then open your browser to <http://localhost:8080>.
+Configure and run Tomcat or any other servlet container with the application.
+You can then open your browser to <http://localhost:8080>.
 
 Configuration
 -------------
@@ -46,46 +47,5 @@ check your the [demo project](https://github.com/Coreoz/Plume-demo/tree/master/p
 
 Deploying to production
 -----------------------
-In the default mode, when `mvn package` is executed, a zip files will be generated.
-This file contains all the projects jar files and startup BAT and Bash files.
-These startup files will not work since they are built only for Play Framework.
-
-With `appserver` you can use `export SERVER=javazip`.
-
-If not there are 3 solutions:
-- switch back to the WAR file generation: see the [Plume War archetype](../plume-archetype-querydsl-jersey-guice),
-- create a maven plugin like the `play2-maven-plugin` that produce Plume compatible startup scripts (if you choose that option, please share your work :),
-- replace in the `pom.xml` file the `play2-maven-plugin` plugin by
-```xml
-<!-- single jar executable with all dependencies -->
-<plugin>
-	<artifactId>maven-assembly-plugin</artifactId>
-	<version>3.0.0</version>
-	<configuration>
-		<archive>
-			<manifest>
-				<mainClass>${package}.WebApplication</mainClass>
-			</manifest>
-		</archive>
-		<descriptorRefs>
-			<descriptorRef>jar-with-dependencies</descriptorRef>
-		</descriptorRefs>
-		<finalName>${project.artifactId}-${project.version}</finalName>
-		<appendAssemblyId>false</appendAssemblyId>
-	</configuration>
-	<executions>
-		<execution>
-			<id>make-assembly</id>
-			<phase>package</phase>
-			<goals>
-				<goal>single</goal>
-			</goals>
-		</execution>
-	</executions>
-</plugin>
-```
-With this solution, `mvn package` will produce an executable jar file.
-Note that this last solution may produce side effects: service loader files and other files 
-that share the same name can be overriden.
-However all Plume modules will works as expected with this solution.
+Run `mvn package` to produce a WAR file.
 
