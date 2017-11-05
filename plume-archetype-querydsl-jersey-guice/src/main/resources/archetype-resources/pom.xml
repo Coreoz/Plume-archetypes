@@ -78,9 +78,9 @@
 		</dependency>
 		<!-- PUT YOUR DATABASE CONNECTOR HERE -->
 		<!-- <dependency> -->
-		<!-- <groupId>mysql</groupId> -->
-		<!-- <artifactId>mysql-connector-java</artifactId> -->
-		<!-- <version>5.1.43</version> -->
+		<!-- 	<groupId>org.mariadb.jdbc</groupId> -->
+		<!-- 	<artifactId>mariadb-java-client</artifactId> -->
+		<!-- 	<version>2.1.2</version> -->
 		<!-- </dependency> -->
 
 		<!-- jersey -->
