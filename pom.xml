@@ -4,7 +4,7 @@
 
 	<groupId>com.coreoz</groupId>
 	<artifactId>plume-archetypes-parent</artifactId>
-	<version>1.1.0</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Plume archetypes parent</name>
@@ -37,7 +37,7 @@
 		<developerConnection>scm:git:git@github.com:Coreoz/Plume-archetypes.git</developerConnection>
 		<connection>scm:git:git@github.com:Coreoz/Plume-archetypes.git</connection>
 		<url>https://github.com/Coreoz/Plume-archetypes</url>
-	  <tag>1.1.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<distributionManagement>
