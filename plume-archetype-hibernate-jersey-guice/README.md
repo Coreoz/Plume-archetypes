@@ -18,7 +18,7 @@ Getting started
 1. Create a project with the
 [Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) archetype,
 execute the command:
-`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-hibernate-jersey-guice -DarchetypeVersion=1.0.1`
+`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-hibernate-jersey-guice -DarchetypeVersion=1.1.0`
 2. Setup your database connector in the `pom.xml` file (look for the "PUT YOUR DATABASE CONNECTOR HERE" comment :)
 3. Setup your database connection parameters in the `application.conf` file.
 If you are using MySQL you should uncomment all the line beginning with `db`,
