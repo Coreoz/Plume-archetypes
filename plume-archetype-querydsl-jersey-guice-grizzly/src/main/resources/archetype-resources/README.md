@@ -78,37 +78,46 @@ it will correctly build and launch the project.
 If not there are 3 solutions:
 - switch back to the WAR file generation: see the [Plume War archetype](../plume-archetype-querydsl-jersey-guice),
 - create a maven plugin like `play2-maven-plugin` that produce Plume compatible startup scripts (if you choose this option, please share your work :),
-- replace in the `pom.xml` file the `play2-maven-plugin` plugin by
+- replace in the `pom.xml` file the `play2-maven-plugin` and the `maven-jar-plugin` plugins by
 ```xml
 <!-- single jar executable with all dependencies -->
 <plugin>
-	<artifactId>maven-assembly-plugin</artifactId>
-	<version>3.0.0</version>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-shade-plugin</artifactId>
+	<version>3.1.0</version>
 	<configuration>
-		<archive>
-			<manifest>
-				<mainClass>${package}.WebApplication</mainClass>
-			</manifest>
-		</archive>
-		<descriptorRefs>
-			<descriptorRef>jar-with-dependencies</descriptorRef>
-		</descriptorRefs>
-		<finalName>${project.artifactId}-${project.version}</finalName>
-		<appendAssemblyId>false</appendAssemblyId>
+		<filters>
+			<filter>
+				<artifact>*:*</artifact>
+				<excludes>
+					<exclude>META-INF/*.SF</exclude>
+					<exclude>META-INF/*.DSA</exclude>
+					<exclude>META-INF/*.RSA</exclude>
+				</excludes>
+			</filter>
+		</filters>
 	</configuration>
 	<executions>
 		<execution>
-			<id>make-assembly</id>
 			<phase>package</phase>
 			<goals>
-				<goal>single</goal>
+				<goal>shade</goal>
 			</goals>
+			<configuration>
+				<transformers>
+					<transformer
+						implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+					<transformer
+						implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+						<mainClass>${package}.WebApplication</mainClass>
+					</transformer>
+				</transformers>
+			</configuration>
 		</execution>
 	</executions>
 </plugin>
 ```
 With this solution, `mvn package` will produce an executable jar file.
-Note that this last solution may produce side effects: service loader files and other files 
-that share the same name can be overriden.
+Note that this last solution may produce side effects: files that share the same name can be overriden.
 However all Plume modules will work as expected with this solution.
 
