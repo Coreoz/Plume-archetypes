@@ -30,7 +30,7 @@ see the [Plume Querydsl documentation](https://github.com/Coreoz/Plume/tree/mast
 by uncommenting the line `install(new GuiceQuerydslModule());`
 
 To generate classes corresponding to the database tables,
-you can run the `com.test.test_griz.db.QuerydslGenerator.main()` method.
+you can run the `${package}.db.QuerydslGenerator.main()` method.
 Before the first run, do not forget to configure
 the `TABLES_PREFIX` constant in `QuerydslGenerator`, to match your tables prefix.
 For example, if your tables are named `abc_film` and `abc_actor`, then your prefix will be `abc_`.
