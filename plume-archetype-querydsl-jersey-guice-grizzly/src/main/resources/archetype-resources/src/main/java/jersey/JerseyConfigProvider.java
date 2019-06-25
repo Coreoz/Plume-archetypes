@@ -30,7 +30,7 @@ public class JerseyConfigProvider implements Provider<ResourceConfig> {
 		// handle errors and exceptions
 		config.register(WsResultExceptionMapper.class);
 		// to debug web-service requests
-		// register(LoggingFilter.class);
+		// register(LoggingFeature.class);
 
 		// java 8
 		config.register(TimeParamProvider.class);

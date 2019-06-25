@@ -32,7 +32,7 @@ public class JerseyConfig extends ResourceConfig {
 		// handle errors and exceptions
 		register(WsResultExceptionMapper.class);
 		// to debug web-service requests
-		// register(LoggingFilter.class);
+		// register(LoggingFeature.class);
 
 		// java 8
 		register(TimeParamProvider.class);
