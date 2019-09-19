@@ -6,10 +6,10 @@ import javax.inject.Singleton;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
+import com.coreoz.plume.jersey.errors.WsJacksonJsonProvider;
 import com.coreoz.plume.jersey.errors.WsResultExceptionMapper;
 import com.coreoz.plume.jersey.java8.TimeParamProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
 /**
  * Jersey configuration
@@ -40,7 +40,7 @@ public class JerseyConfigProvider implements Provider<ResourceConfig> {
 		config.property("jersey.config.server.wadl.disableWadl", true);
 
 		// jackson mapper configuration
-		JacksonJaxbJsonProvider jacksonProvider = new JacksonJaxbJsonProvider();
+		WsJacksonJsonProvider jacksonProvider = new WsJacksonJsonProvider();
 		jacksonProvider.setMapper(objectMapper);
 		config.register(jacksonProvider);
 	}

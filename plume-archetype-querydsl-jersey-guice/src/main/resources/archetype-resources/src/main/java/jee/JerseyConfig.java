@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 import ${package}.guice.Factory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
+import com.coreoz.plume.jersey.errors.WsJacksonJsonProvider;
 import com.coreoz.plume.jersey.errors.WsResultExceptionMapper;
 import com.coreoz.plume.jersey.java8.TimeParamProvider;
 
@@ -42,9 +42,9 @@ public class JerseyConfig extends ResourceConfig {
 		property("jersey.config.server.wadl.disableWadl", true);
 
 		// jackson mapper configuration
-		JacksonJaxbJsonProvider provider = new JacksonJaxbJsonProvider();
-		provider.setMapper(Factory.injector().getInstance(ObjectMapper.class));
-		register(provider);
+		WsJacksonJsonProvider jacksonProvider = new WsJacksonJsonProvider();
+		jacksonProvider.setMapper(Factory.injector().getInstance(ObjectMapper.class));
+		register(jacksonProvider);
 
 		// Guice configuration to use it instead of HK2 to create instances of web-services
 		GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
