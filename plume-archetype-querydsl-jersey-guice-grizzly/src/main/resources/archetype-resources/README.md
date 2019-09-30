@@ -76,7 +76,7 @@ so that the startup files works correctly with Plume Framework.
 If `appserver` is used, then configure the server with `export SERVER=javazip`,
 it will correctly build and launch the project.
 If not there are 3 solutions:
-- switch back to the WAR file generation: see the [Plume War archetype](../plume-archetype-querydsl-jersey-guice),
+- switch back to the WAR file generation: see the [Plume War archetype](https://github.com/Coreoz/Plume-archetypes/tree/master/plume-archetype-querydsl-jersey-guice),
 - create a maven plugin like `play2-maven-plugin` that produce Plume compatible startup scripts (if you choose this option, please share your work :),
 - replace in the `pom.xml` file the `play2-maven-plugin` and the `maven-jar-plugin` plugins by
 ```xml
