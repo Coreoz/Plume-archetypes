@@ -10,6 +10,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
+import com.coreoz.plume.jersey.security.permission.PublicApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ${package}.services.configuration.ConfigurationService;
@@ -19,6 +20,7 @@ import io.swagger.models.Swagger;
 import io.swagger.util.Json;
 
 @Path("/swagger")
+@PublicApi
 @Singleton
 public class SwaggerWs {
 

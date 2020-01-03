@@ -9,6 +9,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.coreoz.plume.jersey.security.permission.PublicApi;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -20,6 +22,7 @@ import ${package}.webservices.api.data.Test;
 @Api("Manage exemple web-services")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@PublicApi
 @Singleton
 public class ExampleWs {
 

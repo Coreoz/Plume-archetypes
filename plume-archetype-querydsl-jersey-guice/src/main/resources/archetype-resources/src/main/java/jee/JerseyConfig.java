@@ -16,6 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.coreoz.plume.jersey.errors.WsJacksonJsonProvider;
 import com.coreoz.plume.jersey.errors.WsResultExceptionMapper;
 import com.coreoz.plume.jersey.java8.TimeParamProvider;
+import com.coreoz.plume.jersey.security.permission.PublicApi;
+import com.coreoz.plume.jersey.security.permission.RequireExplicitAccessControlFeature;
 
 /**
  * Jersey configuration
@@ -31,6 +33,8 @@ public class JerseyConfig extends ResourceConfig {
 		// filters configuration
 		// handle errors and exceptions
 		register(WsResultExceptionMapper.class);
+		// require explicit access control on API
+		register(RequireExplicitAccessControlFeature.accessControlAnnotations(PublicApi.class));
 		// to debug web-service requests
 		// register(LoggingFeature.class);
 

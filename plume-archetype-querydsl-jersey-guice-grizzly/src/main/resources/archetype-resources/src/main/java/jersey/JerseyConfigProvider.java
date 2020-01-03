@@ -9,6 +9,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 import com.coreoz.plume.jersey.errors.WsJacksonJsonProvider;
 import com.coreoz.plume.jersey.errors.WsResultExceptionMapper;
 import com.coreoz.plume.jersey.java8.TimeParamProvider;
+import com.coreoz.plume.jersey.security.permission.PublicApi;
+import com.coreoz.plume.jersey.security.permission.RequireExplicitAccessControlFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -29,6 +31,8 @@ public class JerseyConfigProvider implements Provider<ResourceConfig> {
 		// filters configuration
 		// handle errors and exceptions
 		config.register(WsResultExceptionMapper.class);
+		// require explicit access control on API
+		config.register(RequireExplicitAccessControlFeature.accessControlAnnotations(PublicApi.class));
 		// to debug web-service requests
 		// register(LoggingFeature.class);
 
