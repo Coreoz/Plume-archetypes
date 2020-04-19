@@ -9,7 +9,6 @@ Archetypes
 
 - [Querydsl with Jersey, Guice and Grizzly](plume-archetype-querydsl-jersey-guice-grizzly/)
 - [Querydsl with Jersey and Guice](plume-archetype-querydsl-jersey-guice/)
-- [Hibernate with Jersey and Guice](plume-archetype-hibernate-jersey-guice/)
 
 Getting started
 ---------------
