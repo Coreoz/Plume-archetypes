@@ -13,15 +13,15 @@ Getting started
 ---------------
 1. Create a project with the
 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) with the command:
-`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=1.1.0`
+`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=2.0.0`
 2. See instructions in the generated project `README.md` file
 
-Java 12
--------
-By default Java 12 is used, to use another version, change these lines in the `pom.xml` file:
+Java version
+------------
+By default Java 14 is used, to use another version, change these lines in the `pom.xml` file:
 ```xml
-<maven.compiler.source>12</maven.compiler.source>
-<maven.compiler.target>12</maven.compiler.target>
+<maven.compiler.source>14</maven.compiler.source>
+<maven.compiler.target>14</maven.compiler.target>
 ```
 
 So for example, to use Java 8 instead, you will need to set:
