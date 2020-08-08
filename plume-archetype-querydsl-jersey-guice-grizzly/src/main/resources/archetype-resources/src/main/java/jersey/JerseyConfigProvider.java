@@ -43,6 +43,10 @@ public class JerseyConfigProvider implements Provider<ResourceConfig> {
 		// by default it should be disabled to prevent leaking API documentation
 		config.property("jersey.config.server.wadl.disableWadl", true);
 
+		// Disable automatique relative location URI resolution
+		// By default it transform a relative location to an absolute location
+		config.property("jersey.config.server.headers.location.relative.resolution.disabled", true);
+
 		// jackson mapper configuration
 		WsJacksonJsonProvider jacksonProvider = new WsJacksonJsonProvider();
 		jacksonProvider.setMapper(objectMapper);
