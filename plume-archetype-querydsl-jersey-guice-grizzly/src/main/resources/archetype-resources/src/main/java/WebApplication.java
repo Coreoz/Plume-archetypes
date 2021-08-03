@@ -40,7 +40,7 @@ public class WebApplication {
 
 			logger.info("Server started in {} ms", System.currentTimeMillis() - startTimestamp);
 		} catch (Exception e) {
-			logger.error("Failed to start the server", e);
+			logger.error("Failed to start server", e);
 			// This line is important, because during initialization some libraries change the main thread type
 			// to daemon, which mean that even if the project is completely down, the JVM is not stopped.
 			// Stopping the JVM is important to enable production supervision tools to detect and restart the project.
