@@ -1,7 +1,5 @@
 package ${package};
 
-import java.io.IOException;
-
 import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +19,7 @@ public class WebApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(WebApplication.class);
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		try {
 			long startTimestamp = System.currentTimeMillis();
 
@@ -39,7 +37,7 @@ public class WebApplication {
 			);
 
 			logger.info("Server started in {} ms", System.currentTimeMillis() - startTimestamp);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			logger.error("Failed to start server", e);
 			// This line is important, because during initialization some libraries change the main thread type
 			// to daemon, which mean that even if the project is completely down, the JVM is not stopped.
