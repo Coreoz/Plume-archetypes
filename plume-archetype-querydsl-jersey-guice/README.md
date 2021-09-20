@@ -19,10 +19,10 @@ execute the command:
 
 Java version
 ------------
-By default Java 16 is used, to use another version, change these lines in the `pom.xml` file:
+By default Java 17 is used, to use another version, change these lines in the `pom.xml` file:
 ```xml
-<maven.compiler.source>16</maven.compiler.source>
-<maven.compiler.target>16</maven.compiler.target>
+<maven.compiler.source>17</maven.compiler.source>
+<maven.compiler.target>17</maven.compiler.target>
 ```
 
 So for example, to use Java 8 instead, you will need to set:
