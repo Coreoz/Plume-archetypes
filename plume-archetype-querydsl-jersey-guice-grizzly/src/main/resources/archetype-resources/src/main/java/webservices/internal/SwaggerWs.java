@@ -1,5 +1,8 @@
 package ${package}.webservices.internal;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
@@ -15,34 +18,46 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ${package}.services.configuration.ConfigurationService;
 
-import io.swagger.jaxrs.config.BeanConfig;
-import io.swagger.models.Swagger;
-import io.swagger.util.Json;
+import io.swagger.v3.core.util.Yaml;
+import io.swagger.v3.jaxrs2.integration.JaxrsOpenApiContextBuilder;
+import io.swagger.v3.oas.integration.SwaggerConfiguration;
+import io.swagger.v3.oas.integration.api.OpenApiContext;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.servers.Server;
+import lombok.SneakyThrows;
 
 @Path("/swagger")
-@PublicApi
 @Singleton
+@PublicApi
 public class SwaggerWs {
 
 	private final String swaggerDefinition;
 	private final BasicAuthenticator<String> basicAuthenticator;
 
 	@Inject
+	@SneakyThrows
 	public SwaggerWs(ConfigurationService configurationService) {
-		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setResourcePackage("${package}.webservices.api");
-		beanConfig.setBasePath("/api");
-		beanConfig.setTitle("API ${artifactId}");
-		// this is not only a setter, it also starts the Swagger classes analyzing process 
-		beanConfig.setScan(true);
+		// Basic configuration
+		SwaggerConfiguration openApiConfig = new SwaggerConfiguration()
+			.resourcePackages(Set.of("${package}.webservices.api"))
+			.sortOutput(true)
+			.openAPI(new OpenAPI().servers(List.of(
+				new Server()
+					.url("/api")
+					.description("API ${artifactId}")
+			)));
 
-		// the swagger object can be changed to add security definition
+		// Generation of the OpenApi object
+		OpenApiContext context = new JaxrsOpenApiContextBuilder<>()
+			.openApiConfiguration(openApiConfig)
+			.buildContext(true);
+		// the OpenAPI object can be changed to add security definition
 		// or to alter the generated mapping
-		Swagger swagger = beanConfig.getSwagger();
+		OpenAPI openApi = context.read();
 
 		// serialization of the Swagger definition
 		try {
-			this.swaggerDefinition = Json.mapper().writeValueAsString(swagger);
+			this.swaggerDefinition = Yaml.mapper().writeValueAsString(openApi);
 		} catch (JsonProcessingException e) {
 			throw new RuntimeException(e);
 		}

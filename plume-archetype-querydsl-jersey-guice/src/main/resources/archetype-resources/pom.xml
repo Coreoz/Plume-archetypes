@@ -80,7 +80,7 @@
 		<!-- <dependency> -->
 		<!-- 	<groupId>org.mariadb.jdbc</groupId> -->
 		<!-- 	<artifactId>mariadb-java-client</artifactId> -->
-		<!-- 	<version>2.6.0</version> -->
+		<!-- 	<version>2.7.4</version> -->
 		<!-- </dependency> -->
 
 		<!-- jersey -->
@@ -113,18 +113,8 @@
 
 		<!-- swagger -->
 		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-jaxrs</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>joda-time</artifactId>
-					<groupId>joda-time</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.ws.rs</groupId>
-					<artifactId>jsr311-api</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-jaxrs2</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
