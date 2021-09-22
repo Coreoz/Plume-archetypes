@@ -53,7 +53,7 @@
 			<plugin>
 				<groupId>com.google.code.play2-maven-plugin</groupId>
 				<artifactId>play2-maven-plugin</artifactId>
-				<version>1.0.0-beta6</version>
+				<version>1.0.0-rc5</version>
 				<executions>
 					<execution>
 						<goals>
