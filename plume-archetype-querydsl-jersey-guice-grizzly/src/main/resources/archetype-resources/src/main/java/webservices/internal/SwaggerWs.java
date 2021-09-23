@@ -56,11 +56,7 @@ public class SwaggerWs {
 		OpenAPI openApi = context.read();
 
 		// serialization of the Swagger definition
-		try {
-			this.swaggerDefinition = Yaml.mapper().writeValueAsString(openApi);
-		} catch (JsonProcessingException e) {
-			throw new RuntimeException(e);
-		}
+		this.swaggerDefinition = Yaml.mapper().writeValueAsString(openApi);
 
 		// require authentication to access the API documentation
 		this.basicAuthenticator = BasicAuthenticator.fromSingleCredentials(
