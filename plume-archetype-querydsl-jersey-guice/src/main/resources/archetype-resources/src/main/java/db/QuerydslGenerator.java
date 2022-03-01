@@ -59,7 +59,9 @@ public class QuerydslGenerator {
 				return variableName.substring(0, 1).toLowerCase(Locale.ENGLISH) + variableName.substring(1);
 			}
 		});
-		exporter.setBeanSerializer(new IdBeanSerializer().setUseJacksonAnnotation(true));
+		IdBeanSerializer beanSerializer = new IdBeanSerializer().setUseJacksonAnnotation(true);
+		beanSerializer.setAddToString(true);
+		exporter.setBeanSerializer(beanSerializer);
 		exporter.setColumnAnnotations(true);
 		exporter.setConfiguration(configuration);
 
