@@ -111,7 +111,7 @@
 		<!-- <dependency> -->
 		<!-- 	<groupId>org.mariadb.jdbc</groupId> -->
 		<!-- 	<artifactId>mariadb-java-client</artifactId> -->
-		<!-- 	<version>2.7.4</version> -->
+		<!-- 	<version>3.0.4</version> -->
 		<!-- </dependency> -->
 
 		<!-- jersey -->
@@ -124,27 +124,6 @@
 			<artifactId>jersey-container-grizzly2-http</artifactId>
 		</dependency>
 
-		<!-- jdk9+ non included Java libraries required for Jersey -->
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>javax.activation-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-		</dependency>
 		<!-- to cool down eclipse  -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

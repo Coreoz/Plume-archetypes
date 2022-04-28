@@ -21,7 +21,7 @@ public class GrizzlySetup {
 	private static final int DEFAULT_HTTP_PORT = 8080;
 	private static final String DEFAULT_HTTP_HOST = "0.0.0.0";
 
-	public static void start(ResourceConfig jerseyResourceConfig, String httpPort, String httpHost)
+	public static HttpServer start(ResourceConfig jerseyResourceConfig, String httpPort, String httpHost)
 			throws IOException {
 		// replace JUL logger (used by Grizzly) by SLF4J logger
 		SLF4JBridgeHandler.removeHandlersForRootLogger();
@@ -62,6 +62,8 @@ public class GrizzlySetup {
 		httpServer.getServerConfiguration().addHttpHandler(httpHandler);
 
 		httpServer.start();
+
+		return httpServer;
 	}
 
 }
