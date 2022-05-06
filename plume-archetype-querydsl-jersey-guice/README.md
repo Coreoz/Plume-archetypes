@@ -14,7 +14,7 @@ Getting started
 1. Create a project with the
 [Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) archetype,
 execute the command:
-`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice -DarchetypeVersion=4.0.2`
+`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice -DarchetypeVersion=4.0.3`
 2. See instructions in the generated project `README.md` file
 
 Java version
