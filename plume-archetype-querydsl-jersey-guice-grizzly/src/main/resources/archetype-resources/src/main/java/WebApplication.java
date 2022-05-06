@@ -44,7 +44,7 @@ public class WebApplication {
 			);
 
 			// Add a shutdown hook to execute some code when the JVM receive a kill signal before it stops
-			addShutDownListerner(httpServer);
+			addShutDownListener(httpServer);
 			// If Plume Scheduler / Wisp is used, uncomment next line
 			// addShutDownListerner(httpServer, injector.getInstance(Scheduler.class));
 
@@ -59,7 +59,7 @@ public class WebApplication {
 		
 	}
 
-	private static void addShutDownListerner(HttpServer httpServer) { // If scheduler is used, add arg: Scheduler scheduler
+	private static void addShutDownListener(HttpServer httpServer) { // If scheduler is used, add arg: Scheduler scheduler
 		Runtime.getRuntime().addShutdownHook(new Thread(
 			() -> {
 				logger.info("Stopping signal received, shutting down server and scheduler...");
