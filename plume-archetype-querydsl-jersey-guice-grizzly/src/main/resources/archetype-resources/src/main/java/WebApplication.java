@@ -56,7 +56,6 @@ public class WebApplication {
 			// Stopping the JVM is important to enable production supervision tools to detect and restart the project.
 			System.exit(1);
 		}
-		
 	}
 
 	private static void addShutDownListener(HttpServer httpServer) { // If scheduler is used, add arg: Scheduler scheduler
