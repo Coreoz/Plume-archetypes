@@ -24,7 +24,6 @@ import io.swagger.v3.oas.integration.SwaggerConfiguration;
 import io.swagger.v3.oas.integration.api.OpenApiContext;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
-import lombok.SneakyThrows;
 
 @Path("/swagger")
 @Singleton
@@ -35,8 +34,7 @@ public class SwaggerWs {
 	private final BasicAuthenticator<String> basicAuthenticator;
 
 	@Inject
-	@SneakyThrows
-	public SwaggerWs(ConfigurationService configurationService) {
+	public SwaggerWs(ConfigurationService configurationService) throws Exception {
 		// Basic configuration
 		SwaggerConfiguration openApiConfig = new SwaggerConfiguration()
 			.resourcePackages(Set.of("${package}.webservices.api"))
