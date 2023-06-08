@@ -61,11 +61,10 @@ More modules
 - [Plume Mail](https://github.com/Coreoz/Plume/tree/master/plume-mail): send mails,
 - [Plume Scheduler](https://github.com/Coreoz/Plume/tree/master/plume-scheduler): schedule recurring Java jobs/tasks,
 - [Plume Admin](https://github.com/Coreoz/Plume-admin): web-service with a security layer to create an admin area,
-- [Plume Admin AngularJs](https://github.com/Coreoz/Plume-admin-ui-angularjs): an administration HTML/JS UI that use Plume Admin,
-- [Plume File](https://github.com/Coreoz/Plume-file/tree/master/plume-file-core): manage and serve files,
-- [Plume File Gallery](https://github.com/Coreoz/Plume-file/tree/master/plume-file-gallery): manage medias galleries.
+- [Plume File](https://github.com/Coreoz/Plume-file): manage and serve files,
+- [Plume frontend with React](https://github.com/Coreoz/create-plume-react-project): a frontend JS CLI to create admin or basic front React/TS application that integrate perfectly with a Plume backend (and not only!)
 
-Check the [demo project](https://github.com/Coreoz/Plume-demo/tree/master/plume-demo-full-guice-jersey)
+Check the [showcase project](https://github.com/Coreoz/Plume-showcase)
 to see an example with these modules.
 
 Deploying to production
