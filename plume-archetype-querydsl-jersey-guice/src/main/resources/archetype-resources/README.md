@@ -50,7 +50,7 @@ To completly get rid of the database component:
 Swagger
 -------
 Swagger is pre-configured to provide documentation about the project web-services.
-This documentation is protected by credentials that should be configured in the `application.conf` file.
+This documentation is protected by credentials that can be configured in the `application.conf` file.
 
 To access this documentation, start the project
 and go to <http://localhost:8080/webjars/swagger-ui/4.1.2/index.html?url=/api/swagger>.
