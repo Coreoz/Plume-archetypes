@@ -7,7 +7,6 @@ import com.typesafe.config.Config;
 
 @Singleton
 public class ConfigurationService {
-
 	private final Config config;
 
 	@Inject
@@ -19,13 +18,11 @@ public class ConfigurationService {
 		return config.getString("hello");
 	}
 
-	public String swaggerAccessUsername() {
-		return config.getString("swagger.access.username");
+	public String internalApiAuthUsername() {
+		return config.getString("internal-api.auth-username");
 	}
 
-	public String swaggerAccessPassword() {
-		return config.getString("swagger.access.password");
+	public String internalApiAuthPassword() {
+		return config.getString("internal-api.auth-password");
 	}
-
 }
-

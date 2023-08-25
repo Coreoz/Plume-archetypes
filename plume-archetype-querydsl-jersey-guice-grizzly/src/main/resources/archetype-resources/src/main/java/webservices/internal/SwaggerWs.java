@@ -16,7 +16,7 @@ import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
 import com.coreoz.plume.jersey.security.permission.PublicApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import ${package}.services.configuration.ConfigurationService;
+import ${package}.webservices.internal.InternalApiAuthenticator;
 
 import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.jaxrs2.integration.JaxrsOpenApiContextBuilder;
@@ -29,12 +29,11 @@ import io.swagger.v3.oas.models.servers.Server;
 @Singleton
 @PublicApi
 public class SwaggerWs {
-
 	private final String swaggerDefinition;
 	private final BasicAuthenticator<String> basicAuthenticator;
 
 	@Inject
-	public SwaggerWs(ConfigurationService configurationService) throws Exception {
+	public SwaggerWs(InternalApiAuthenticator apiAuthenticator) throws Exception {
 		// Basic configuration
 		SwaggerConfiguration openApiConfig = new SwaggerConfiguration()
 			.resourcePackages(Set.of("${package}.webservices.api"))
@@ -57,11 +56,7 @@ public class SwaggerWs {
 		this.swaggerDefinition = Yaml.mapper().writeValueAsString(openApi);
 
 		// require authentication to access the API documentation
-		this.basicAuthenticator = BasicAuthenticator.fromSingleCredentials(
-			configurationService.swaggerAccessUsername(),
-			configurationService.swaggerAccessPassword(),
-			"API ${artifactId}"
-		);
+		this.basicAuthenticator = apiAuthenticator.get();
 	}
 
 	@Produces(MediaType.APPLICATION_JSON)
@@ -71,6 +66,4 @@ public class SwaggerWs {
 
 		return swaggerDefinition;
 	}
-
 }
-
