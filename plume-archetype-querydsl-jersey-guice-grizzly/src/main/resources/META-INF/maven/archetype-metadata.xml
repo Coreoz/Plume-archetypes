@@ -4,7 +4,7 @@
 
 	<requiredProperties>
 		<requiredProperty key="plume-dependencies-version">
-            <defaultValue>4.3.4</defaultValue>
+			<defaultValue>4.3.4</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 
@@ -33,7 +33,9 @@
 		<fileSet filtered="true" encoding="UTF-8">
 			<directory />
 			<includes>
+				<include>.editorconfig</include>
 				<include>.gitignore</include>
+				<include>lombok.config</include>
 				<include>README.md</include>
 				<include>pom.xml</include>
 			</includes>
