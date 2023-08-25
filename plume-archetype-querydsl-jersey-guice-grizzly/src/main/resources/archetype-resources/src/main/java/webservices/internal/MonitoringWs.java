@@ -19,7 +19,6 @@ import com.coreoz.plume.jersey.monitoring.utils.health.HealthCheckBuilder;
 import com.coreoz.plume.jersey.monitoring.utils.health.beans.HealthStatus;
 import com.coreoz.plume.jersey.monitoring.utils.info.ApplicationInfoProvider;
 
-import com.coreoz.plume.db.transaction.TransactionManager;
 import com.coreoz.plume.jersey.monitoring.utils.info.beans.ApplicationInfo;
 import com.coreoz.plume.jersey.monitoring.utils.metrics.MetricsCheckBuilder;
 import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
@@ -38,11 +37,15 @@ public class MonitoringWs {
     private final BasicAuthenticator<String> basicAuthenticator;
 
     @Inject
-    public MonitoringWs(ApplicationInfoProvider applicationInfoProvider, TransactionManager transactionManager, InternalApiAuthenticator apiAuthenticator) {
+    public MonitoringWs(
+        ApplicationInfoProvider applicationInfoProvider,
+        // TransactionManager transactionManager,
+        InternalApiAuthenticator apiAuthenticator
+    ) {
         this.applicationInfo = applicationInfoProvider.get();
         // Registering health checks
         this.healthStatusProvider = new HealthCheckBuilder()
-            .registerDatabaseHealthCheck(transactionManager)
+            // .registerDatabaseHealthCheck(transactionManager)
             .build();
 
         // Registering metrics to monitor
