@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<archetype-descriptor name="plume-archetype-hibernate-jersey-guice">
+<archetype-descriptor name="plume-archetype-querydsl-jersey-guice">
 
 	<requiredProperties>
 		<requiredProperty key="plume-dependencies-version">
@@ -15,20 +15,25 @@
 				<include>**/*</include>
 			</includes>
 		</fileSet>
-
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/main/webapp</directory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</fileSet>
-
 		<fileSet filtered="true" encoding="UTF-8">
 			<directory>src/main/resources/</directory>
 			<includes>
 				<include>**/*</include>
 			</includes>
 		</fileSet>
+
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>src/test/resources</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
 
 		<fileSet filtered="true" encoding="UTF-8">
 			<directory />
@@ -38,19 +43,6 @@
 				<include>lombok.config</include>
 				<include>README.md</include>
 				<include>pom.xml</include>
-			</includes>
-		</fileSet>
-
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>/src/test/java</directory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>/src/test/resources</directory>
-			<includes>
-				<include>**/*</include>
 			</includes>
 		</fileSet>
 	</fileSets>

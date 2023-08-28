@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<archetype-descriptor name="plume-archetype-hibernate-jersey-guice">
+<archetype-descriptor name="plume-archetype-querydsl-jersey-guice-grizzly">
 
 	<requiredProperties>
 		<requiredProperty key="plume-dependencies-version">
