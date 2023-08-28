@@ -168,6 +168,14 @@
 			<artifactId>plume-db-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+        <!-- Used for the TimeProviderForTest sample class -->
+        <!-- This dependency can be removed if plume-services is already imported, -->
+        <!-- or if the sample time test is deleted -->
+        <dependency>
+            <groupId>com.coreoz</groupId>
+            <artifactId>plume-services</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<dependencyManagement>
