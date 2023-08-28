@@ -16,8 +16,6 @@ import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
 import com.coreoz.plume.jersey.security.permission.PublicApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import ${package}.webservices.internal.InternalApiAuthenticator;
-
 import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.jaxrs2.integration.JaxrsOpenApiContextBuilder;
 import io.swagger.v3.oas.integration.SwaggerConfiguration;

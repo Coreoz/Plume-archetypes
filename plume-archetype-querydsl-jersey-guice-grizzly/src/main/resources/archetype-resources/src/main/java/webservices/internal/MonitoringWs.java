@@ -12,8 +12,6 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import ${package}.webservices.internal.InternalApiAuthenticator;
-
 import com.codahale.metrics.Metric;
 import com.coreoz.plume.jersey.monitoring.utils.health.HealthCheckBuilder;
 import com.coreoz.plume.jersey.monitoring.utils.health.beans.HealthStatus;
