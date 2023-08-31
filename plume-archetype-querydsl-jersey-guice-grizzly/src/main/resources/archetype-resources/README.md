@@ -20,13 +20,19 @@ If you have any doubt, check out the [configuration documentation](https://githu
 Database
 --------
 To connect to a database, the Plume Querydsl module must be configured:
-1. Setup the database connector in the `pom.xml` file (look for the "PUT YOUR DATABASE CONNECTOR HERE" comment
+1. Setup the database connector in the `pom.xml` file (look for the `PUT YOUR DATABASE CONNECTOR HERE` comment
 2. Setup the database connection parameters in the `application.conf` file,
 see the [Plume Querydsl documentation](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl#configuration) for details
 3. Add the Plume Querydsl module in the Guice configuration class `ApplicationModule`
 by uncommenting the line `install(new GuiceQuerydslModule());`
 4. Add database monitoring in `MonitoringWs` API by uncommenting the line `.registerDatabaseHealthCheck(transactionManager)` and the corresponding one in the constructor for `transactionManager`
-5. A good pratice is to use [Flyway](https://github.com/flyway/flyway) for database migration. A usage example can be found in the [Plume Showcase project](https://github.com/Coreoz/Plume-showcase) in the `InitializeDatabase` class that is in charge of executing the database migrations. Don't forget to add the Maven `flyway-mysql` dependency if MariDB/MySQL is used (or the module for the corresponding database used). If Flyway is indeed used, in the class `TestModule`, the line `install(new GuiceDbTestModule());` should be uncommented
+5. A good pratice is to use [Flyway](https://github.com/flyway/flyway) for database migration. A usage example can be found in the [Plume Showcase project](https://github.com/Coreoz/Plume-showcase). Flyway is  preconfigured, to enable it: 
+   1. In the `pom.xml` file, uncomment the lines after `Uncomment to use flyway`. Reference the correct Flyway module if MySQL/MariaDB is not your database
+   2. In the `WebApplication` class, uncomment the line `injector.getInstance(DatabaseInitializer.class).setup();`
+   3. In the `V1__setup_database.sql` file, insert the SQL code for the first initialization of your database
+   4. In the `TestModule` class, uncomment the line `install(new GuiceDbTestModule());`
+   5. In the `DatabaseInitializer` class, uncomment the code in the `setup()` method
+6. TODO put in archetype gitlab and github config
 
 To generate classes corresponding to the database tables,
 you can run the `${package}.db.QuerydslGenerator.main()` method.

@@ -23,20 +23,24 @@ import com.google.inject.Stage;
 public class WebApplication {
 	private static final Logger logger = LoggerFactory.getLogger(WebApplication.class);
 
-	// maximal waiting time for the last process to execute after the JVM received a kill signal
+	// Maximal waiting time for the last process to execute after the JVM received a kill signal
 	public static final Duration GRACEFUL_SHUTDOWN_TIMEOUT = Duration.ofSeconds(60);
 
 	public static void main(String[] args) {
 		try {
 			long startTimestamp = System.currentTimeMillis();
 
-			// initialize all application objects with Guice
+			// Initialize all application objects with Guice
 			Injector injector = Guice.createInjector(Stage.PRODUCTION, new ApplicationModule());
 
 			ResourceConfig jerseyResourceConfig = injector.getInstance(ResourceConfig.class);
-			// enable Jersey to create objects through Guice Injector instance
+
+			// Initialize database
+			// injector.getInstance(DatabaseInitializer.class).setup();
+
+			// Enable Jersey to create objects through Guice Injector instance
 			jerseyResourceConfig.register(new JerseyGuiceFeature(injector));
-			// starts the server
+			// Starts the server
 			HttpServer httpServer = GrizzlySetup.start(
 				jerseyResourceConfig,
 				System.getProperty("http.port"),

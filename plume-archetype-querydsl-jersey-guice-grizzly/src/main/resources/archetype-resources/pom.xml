@@ -108,11 +108,20 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- PUT YOUR DATABASE CONNECTOR HERE -->
-		<!-- <dependency> -->
-		<!-- 	<groupId>org.mariadb.jdbc</groupId> -->
-		<!-- 	<artifactId>mariadb-java-client</artifactId> -->
-		<!-- 	<version>3.1.4</version> -->
-		<!-- </dependency> -->
+		 <!--<dependency>
+		 	<groupId>org.mariadb.jdbc</groupId>
+		 	<artifactId>mariadb-java-client</artifactId>
+		 	<version>3.2.0</version>
+		 </dependency>-->
+        <!-- Uncomment to use flyway -->
+        <!--<dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+        </dependency>-->
 
 		<!-- jersey -->
 		<dependency>

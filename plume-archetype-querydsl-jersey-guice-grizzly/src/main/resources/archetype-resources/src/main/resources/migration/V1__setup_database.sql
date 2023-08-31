@@ -1,0 +1,2 @@
+-- Put here you database initialisation script, future database changes should be done each time in another file
+-- Initialization scripts from plume admin, plume file, etc. can also be referenced here, see the showcase project for examples: https://github.com/Coreoz/Plume-showcase/tree/master/src/main/resources/db/migration
