@@ -19,6 +19,7 @@
 	</properties>
 
 	<build>
+        <finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -57,7 +58,7 @@
 				<executions>
 					<execution>
 						<goals>
-							<goal>dist</goal>
+							<goal>dist-exploded</goal>
 						</goals>
 						<phase>package</phase>
 					</execution>

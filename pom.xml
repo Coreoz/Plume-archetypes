@@ -59,7 +59,6 @@
 	</properties>
 
 	<modules>
-		<module>plume-archetype-querydsl-jersey-guice</module>
 		<module>plume-archetype-querydsl-jersey-guice-grizzly</module>
 	</modules>
 
