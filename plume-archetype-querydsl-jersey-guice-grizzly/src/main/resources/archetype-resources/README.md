@@ -19,6 +19,8 @@ If you have any doubt, check out the [configuration documentation](https://githu
 
 Database
 --------
+TODO reference the main README file and replace this section by "Finalizing project creation" <= this will need to be the first section
+
 To connect to a database, the Plume Querydsl module must be configured:
 1. Setup the database connector in the `pom.xml` file (look for the `PUT YOUR DATABASE CONNECTOR HERE` comment
 2. Setup the database connection parameters in the `application.conf` file,
@@ -44,6 +46,10 @@ See the detailed documentations:
 - [Plume Database](https://github.com/Coreoz/Plume/tree/master/plume-db)
 - [Plume Querydsl](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl)
 - [Plume Querydsl codegen](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl-codegen)
+
+Configuring CI
+--------------
+TODO reference main README file
 
 Removing Qurerydsl
 ------------------

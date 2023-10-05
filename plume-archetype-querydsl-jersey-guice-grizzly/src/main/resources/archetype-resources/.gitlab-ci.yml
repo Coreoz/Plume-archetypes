@@ -1,0 +1,15 @@
+# If needed, JAVA_HOME configuration
+# before_script:
+#  - export JAVA_HOME="/usr/local/java/jdk-17"
+
+SonarQube analyze:
+  script:
+    - sonar-scanner -D project.settings=sonar-project.properties
+  tags:
+    - sonar
+  only:
+    - main
+
+maven build:
+  script:
+    - "mvn package"

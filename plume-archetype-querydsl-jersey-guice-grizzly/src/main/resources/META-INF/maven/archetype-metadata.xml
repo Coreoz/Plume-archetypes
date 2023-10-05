@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <archetype-descriptor name="plume-archetype-querydsl-jersey-guice-grizzly">
-
 	<requiredProperties>
 		<requiredProperty key="plume-dependencies-version">
 			<defaultValue>4.3.4</defaultValue>
@@ -40,11 +39,12 @@
 			<includes>
 				<include>.editorconfig</include>
 				<include>.gitignore</include>
+				<include>.gitlab-ci.yml</include>
 				<include>lombok.config</include>
-				<include>README.md</include>
+                <include>sonar-project.properties</include>
+                <include>README.md</include>
 				<include>pom.xml</include>
 			</includes>
 		</fileSet>
 	</fileSets>
-
 </archetype-descriptor>

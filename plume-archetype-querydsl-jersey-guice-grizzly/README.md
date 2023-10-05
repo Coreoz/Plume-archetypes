@@ -18,6 +18,8 @@ Getting started
 
 Java version
 ------------
+TODO java 21
+
 By default Java 17 is used, to use another version, change these lines in the `pom.xml` file:
 ```xml
 <maven.compiler.source>17</maven.compiler.source>
@@ -29,6 +31,10 @@ So for example, to use Java 8 instead, you will need to set:
 <maven.compiler.source>1.8</maven.compiler.source>
 <maven.compiler.target>1.8</maven.compiler.target>
 ```
+
+Configuring CI
+--------------
+TODO finish doc about Gitlab, Sonar, Github + add Github CI
 
 Deploying to production
 -----------------------
