@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 
+// TODO provide basic documentation
 @RunWith(GuiceTestRunner.class)
 @GuiceModules(TestModule.class)
 public class SampleIntegrationTest {

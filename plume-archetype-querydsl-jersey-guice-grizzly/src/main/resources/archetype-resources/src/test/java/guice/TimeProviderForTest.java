@@ -5,6 +5,7 @@ import com.coreoz.plume.services.time.TimeProvider;
 import javax.inject.Singleton;
 import java.time.Clock;
 
+// TODO provide basic documentation
 @Singleton
 public class TimeProviderForTest implements TimeProvider {
 	private Clock clock;

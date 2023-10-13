@@ -85,3 +85,7 @@ Deploying to production
 If `appserver` is used, then this is automated with the server configured to `export SERVER=javazip`.
 
 For further detailed and `WAR` packaging, the [Plume Grizzly archetype](https://github.com/Coreoz/Plume-archetypes/tree/master/plume-archetype-querydsl-jersey-guice-grizzly) contains more information.
+
+Monitoring application
+----------------------
+TODO document monitoring
