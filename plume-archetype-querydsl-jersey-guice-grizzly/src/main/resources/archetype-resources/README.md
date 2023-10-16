@@ -4,6 +4,8 @@ ${artifactId}
 Welcome to your [Plume](https://github.com/Coreoz/Plume) project!
 Here are some reminders to get your project up and running.
 
+If you just created the project, you need to have a look at the [finalizing project creation](https://github.com/Coreoz/Plume-archetypes/blob/master/plume-archetype-querydsl-jersey-guice-grizzly#finalizing-project-creation) section in the project Maven Archetype.
+
 Configuring your IDE
 --------------------
 Install [Lombok](https://projectlombok.org/): http://jnb.ociweb.com/jnb/jnbJan2010.html#installation
@@ -19,33 +21,15 @@ If you have any doubt, check out the [configuration documentation](https://githu
 
 Database
 --------
-TODO reference the main README file and replace this section by "Finalizing project creation" <= this will need to be the first section
-
-To connect to a database, the Plume Querydsl module must be configured:
-1. Setup the database connector in the `pom.xml` file (look for the `PUT YOUR DATABASE CONNECTOR HERE` comment
-2. Setup the database connection parameters in the `application.conf` file,
-see the [Plume Querydsl documentation](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl#configuration) for details
-3. Add the Plume Querydsl module in the Guice configuration class `ApplicationModule`
-by uncommenting the line `install(new GuiceQuerydslModule());`
-4. Add database monitoring in `MonitoringWs` API by uncommenting the line `.registerDatabaseHealthCheck(transactionManager)` and the corresponding one in the constructor for `transactionManager`
-5. A good pratice is to use [Flyway](https://github.com/flyway/flyway) for database migration. A usage example can be found in the [Plume Showcase project](https://github.com/Coreoz/Plume-showcase). Flyway is  preconfigured, to enable it: 
-   1. In the `pom.xml` file, uncomment the lines after `Uncomment to use flyway`. Reference the correct Flyway module if MySQL/MariaDB is not your database
-   2. In the `WebApplication` class, uncomment the line `injector.getInstance(DatabaseInitializer.class).setup();`
-   3. In the `V1__setup_database.sql` file, insert the SQL code for the first initialization of your database
-   4. In the `TestModule` class, uncomment the line `install(new GuiceDbTestModule());`
-   5. In the `DatabaseInitializer` class, uncomment the code in the `setup()` method
-6. TODO put in archetype gitlab and github config
-
 To generate classes corresponding to the database tables,
 you can run the `${package}.db.QuerydslGenerator.main()` method.
-Before the first run, do not forget to configure
-the `TABLES_PREFIX` constant in `QuerydslGenerator`, to match your tables prefix.
-For example, if your tables are named `abc_film` and `abc_actor`, then your prefix will be `abc_`.
 
 See the detailed documentations:
 - [Plume Database](https://github.com/Coreoz/Plume/tree/master/plume-db)
 - [Plume Querydsl](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl)
 - [Plume Querydsl codegen](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl-codegen)
+
+Documentation about initial database configuration is available in the [Plume Maven Archetype](https://github.com/Coreoz/Plume-archetypes/blob/master/plume-archetype-querydsl-jersey-guice-grizzly#database-configuration).
 
 Configuring CI
 --------------
@@ -61,10 +45,32 @@ To completly get rid of the database component:
 Swagger / OpenAPI
 -----------------
 Swagger is pre-configured to provide documentation about the project web-services.
-This documentation is protected by credentials that are configured in the `application.conf` file.
+This documentation is protected by Basic access authentication. This is configured in the `application.conf` file
+in the `internal-api.auth-username` and `internal-api.auth-password` keys.
 
 To access this documentation, start the project
 and go to <http://localhost:8080/webjars/swagger-ui/4.1.2/index.html?url=/api/swagger>.
+
+Deploying to production
+-----------------------
+1. Execute `mvn package`
+2. Run `java -cp "target/dist/${artifactId}/lib/*" ${package}.WebApplication`. This can be adapted if the jar files are copied elsewhere.
+
+If `appserver` is used, then this is automated with the server configured to `export SERVER=javazip`.
+
+For further details on `WAR` packaging, see the [Plume Grizzly archetype](https://github.com/Coreoz/Plume-archetypes/tree/master/plume-archetype-querydsl-jersey-guice-grizzly).
+
+Monitoring application
+----------------------
+Monitoring is available through these two endpoints:
+- `/monitoring/info`: provides information about the application name and version, this can be customized : TODO how?
+- `/monitoring/health`: provides information about application health
+- `/monitoring/metrics`: provides JVM and custom metrics info : TODO customization
+
+So by default, when running on localhost, metrics are available on: <http://localhost:8080/monitoring/metrics>
+
+These endpoints are protected by Basic access authentication. This is configured in the `application.conf` file
+in the `internal-api.auth-username` and `internal-api.auth-password` keys.
 
 More modules
 ------------
@@ -76,16 +82,3 @@ More modules
 
 Check the [showcase project](https://github.com/Coreoz/Plume-showcase)
 to see an example with these modules.
-
-Deploying to production
------------------------
-1. Execute `mvn package`
-2. Run `java -cp "target/dist/${artifactId}/lib/*" ${package}.WebApplication`. This can be adapted if the jar files are copied elsewhere.
-
-If `appserver` is used, then this is automated with the server configured to `export SERVER=javazip`.
-
-For further detailed and `WAR` packaging, the [Plume Grizzly archetype](https://github.com/Coreoz/Plume-archetypes/tree/master/plume-archetype-querydsl-jersey-guice-grizzly) contains more information.
-
-Monitoring application
-----------------------
-TODO document monitoring

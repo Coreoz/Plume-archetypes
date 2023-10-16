@@ -14,12 +14,12 @@ Getting started
 1. Create a project with the
 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) with the command:
 `mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=4.1.1`
-2. See instructions in the generated project `README.md` file
+2. See next section to [finalize project creation](#finalizing-project-creation)
 
-Java version
-------------
-TODO java 21
+Finalizing project creation
+---------------------------
 
+### Java version
 By default Java 17 is used, to use another version, change these lines in the `pom.xml` file:
 ```xml
 <maven.compiler.source>17</maven.compiler.source>
@@ -32,9 +32,41 @@ So for example, to use Java 8 instead, you will need to set:
 <maven.compiler.target>1.8</maven.compiler.target>
 ```
 
-Configuring CI
---------------
+### Kotlin
+TODO to
+
+### Database configuration
+To connect to a database, the Plume Querydsl module must be configured:
+1. Setup the database connector in the `pom.xml` file (look for the `PUT YOUR DATABASE CONNECTOR HERE` comment
+2. Setup the database connection parameters in the `application.conf` file,
+   see the [Plume Querydsl documentation](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl#configuration) for details
+3. Add the Plume Querydsl module in the Guice configuration class `ApplicationModule`
+   by uncommenting the line `install(new GuiceQuerydslModule());`
+4. Add database monitoring in `MonitoringWs` API by uncommenting the line `.registerDatabaseHealthCheck(transactionManager)` and the corresponding one in the constructor for `transactionManager`
+5. A good pratice is to use [Flyway](https://github.com/flyway/flyway) for database migration. A usage example can be found in the [Plume Showcase project](https://github.com/Coreoz/Plume-showcase). Flyway is  preconfigured, to enable it:
+    1. In the `pom.xml` file, uncomment the lines after `Uncomment to use flyway`. Reference the correct Flyway module if MySQL/MariaDB is not your database
+    2. In the `WebApplication` class, uncomment the line `injector.getInstance(DatabaseInitializer.class).setup();`
+    3. In the `V1__setup_database.sql` file, insert the SQL code for the first initialization of your database
+    4. In the `TestModule` class, uncomment the line `install(new GuiceDbTestModule());`
+    5. In the `DatabaseInitializer` class, uncomment the code in the `setup()` method
+
+To generate classes corresponding to the database tables,
+you can run the `${package}.db.QuerydslGenerator.main()` method.
+Before the first run, do not forget to configure
+the `TABLES_PREFIX` constant in `QuerydslGenerator`, to match your tables prefix.
+For example, if your tables are named `abc_film` and `abc_actor`, then your prefix will be `abc_`.
+
+See the detailed documentations:
+- [Plume Database](https://github.com/Coreoz/Plume/tree/master/plume-db)
+- [Plume Querydsl](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl)
+- [Plume Querydsl codegen](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl-codegen)
+
+### Configuring CI
 TODO finish doc about Gitlab, Sonar, Github + add Github CI
+
+Need to migrate to WAR packaging?
+----------------------------------
+See the [WAR migration guide](../plume-archetype-querydsl-jersey-guice).
 
 Deploying to production
 -----------------------
@@ -91,7 +123,3 @@ If not there are 3 solutions:
 With this solution, `mvn package` will produce an executable jar file.
 Note that this last solution may produce side effects: files that share the same name can be overridden.
 However all Plume modules will work as expected with this solution.
-
-Need to migrate to WAR packaging ?
-----------------------------------
-See the [WAR migration guide](../plume-archetype-querydsl-jersey-guice).
