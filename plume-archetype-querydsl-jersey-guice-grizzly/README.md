@@ -32,9 +32,6 @@ So for example, to use Java 8 instead, you will need to set:
 <maven.compiler.target>1.8</maven.compiler.target>
 ```
 
-### Kotlin
-TODO to
-
 ### Database configuration
 To connect to a database, the Plume Querydsl module must be configured:
 1. Setup the database connector in the `pom.xml` file (look for the `PUT YOUR DATABASE CONNECTOR HERE` comment
@@ -61,8 +58,23 @@ See the detailed documentations:
 - [Plume Querydsl](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl)
 - [Plume Querydsl codegen](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl-codegen)
 
+### Removing database elements
+To completely get rid of the database component:
+1. Remove the line `install(new GuiceQuerydslModule());` in the `ApplicationModule` class,
+2. Remove the package `db` in the project,
+3. Remove the dependencies `plume-db-querydsl` and `plume-db-querydsl-codegen` as long as the commented lines in the `pom.xml` file
+4. Remove the `src/main/resources` folder
+5. In the configurations files, `src/main/resources/application.conf` and `src/test/resources/application.conf`, remove database configuration
+
 ### Configuring CI
-TODO finish doc about Gitlab, Sonar, Github + add Github CI
+Continuous integration enables to automatically run all code based tests each time that the code is pushed remotely. It is very useful to avoid making regressions while pushing new code.
+
+The archetype contains Gitlab and Github configuration files to enable this continuous integration out of the box. After a project is created, the used CI files should be deleted: so if Gitlab is used, Github files should be deleted.
+
+These CI configuration files are:
+- Gitlab CI configuration is made in the `.gitlab-ci.yml` file
+- Sonar configuration is made in the `sonar-project.properties` file for code quality checks
+- Github CI configuration is made in the `.github` folder
 
 Need to migrate to WAR packaging?
 ----------------------------------
@@ -122,4 +134,4 @@ If not there are 3 solutions:
 ```
 With this solution, `mvn package` will produce an executable jar file.
 Note that this last solution may produce side effects: files that share the same name can be overridden.
-However all Plume modules will work as expected with this solution.
+However, all Plume modules will work as expected with this solution.

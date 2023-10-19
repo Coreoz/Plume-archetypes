@@ -33,14 +33,9 @@ Documentation about initial database configuration is available in the [Plume Ma
 
 Configuring CI
 --------------
-TODO reference main README file
-
-Removing Qurerydsl
-------------------
-To completly get rid of the database component:
-1. Remove the line `install(new GuiceQuerydslModule());` in the `ApplicationModule` class,
-2. Remove the package `db` in the project,
-3. Remove the dependencies `plume-db-querydsl` and `plume-db-querydsl-codegen` in the `pom.xml` file.
+- Gitlab CI configuration is made in the `.gitlab-ci.yml` file
+- Sonar configuration is made in the `sonar-project.properties` file
+- Github CI configuration is made in the `.github` folder
 
 Swagger / OpenAPI
 -----------------
@@ -63,14 +58,16 @@ For further details on `WAR` packaging, see the [Plume Grizzly archetype](https:
 Monitoring application
 ----------------------
 Monitoring is available through these two endpoints:
-- `/monitoring/info`: provides information about the application name and version, this can be customized : TODO how?
+- `/monitoring/info`: provides information about the application name and version. Additionnal information can be added by providing a configura
 - `/monitoring/health`: provides information about application health
-- `/monitoring/metrics`: provides JVM and custom metrics info : TODO customization
+- `/monitoring/metrics`: provides JVM and custom metrics info. This can be customized in the `MonitoringWs` class where the monitoring endpoints are configured
 
 So by default, when running on localhost, metrics are available on: <http://localhost:8080/monitoring/metrics>
 
 These endpoints are protected by Basic access authentication. This is configured in the `application.conf` file
 in the `internal-api.auth-username` and `internal-api.auth-password` keys.
+
+These endpoints should be compatible with [Spring Actuators endpoints](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints).
 
 More modules
 ------------
