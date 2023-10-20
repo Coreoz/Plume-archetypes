@@ -19,7 +19,7 @@ public class InternalApiAuthenticator {
             "API ${artifactId}"
         );
     }
-    
+
     public BasicAuthenticator<String> get() {
         return this.basicAuthenticator;
     }
