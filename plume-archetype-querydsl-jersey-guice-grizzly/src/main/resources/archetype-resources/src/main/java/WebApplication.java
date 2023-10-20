@@ -6,8 +6,6 @@ import java.util.concurrent.TimeUnit;
 import org.glassfish.grizzly.GrizzlyFuture;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import ${package}.guice.ApplicationModule;
 import ${package}.jersey.GrizzlySetup;
@@ -17,12 +15,13 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Stage;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * The application entry point, where it all begins.
  */
+@Slf4j
 public class WebApplication {
-	private static final Logger logger = LoggerFactory.getLogger(WebApplication.class);
-
 	// Maximal waiting time for the last process to execute after the JVM received a kill signal
 	public static final Duration GRACEFUL_SHUTDOWN_TIMEOUT = Duration.ofSeconds(60);
 
@@ -67,15 +66,17 @@ public class WebApplication {
 			() -> {
 				logger.info("Stopping signal received, shutting down server and scheduler...");
 				GrizzlyFuture<HttpServer> grizzlyServerShutdownFuture = httpServer.shutdown(GRACEFUL_SHUTDOWN_TIMEOUT.toSeconds(), TimeUnit.SECONDS);
-					try {
-						logger.info("Waiting for server to shut down... Shutdown timeout is {} seconds", GRACEFUL_SHUTDOWN_TIMEOUT.toSeconds());
-						// If scheduler is used, uncomment next line
-						// scheduler.gracefullyShutdown(GRACEFUL_SHUTDOWN_TIMEOUT);
-						grizzlyServerShutdownFuture.get();
-					} catch(Exception e) {
-						logger.error("Error while shutting down server.", e);
-					}
-				logger.info("Server and scheduler stopped.");
+                try {
+                    logger.info("Waiting for server to shut down... Shutdown timeout is {} seconds", GRACEFUL_SHUTDOWN_TIMEOUT.toSeconds());
+                    // If scheduler is used, uncomment next line
+                    // scheduler.gracefullyShutdown(GRACEFUL_SHUTDOWN_TIMEOUT);
+                    grizzlyServerShutdownFuture.get();
+                    logger.info("Server and scheduler stopped.");
+                } catch(Exception e) {
+                    logger.error("Error while shutting down server.", e);
+                    // It's not useful, but it makes Sonar happy
+                    Thread.currentThread().interrupt();
+                }
 			},
 			"shutdownHook"
 		));

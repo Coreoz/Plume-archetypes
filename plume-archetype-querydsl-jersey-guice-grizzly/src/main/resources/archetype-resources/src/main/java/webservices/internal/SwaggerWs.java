@@ -14,7 +14,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
 import com.coreoz.plume.jersey.security.permission.PublicApi;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.jaxrs2.integration.JaxrsOpenApiContextBuilder;
@@ -23,6 +22,8 @@ import io.swagger.v3.oas.integration.api.OpenApiContext;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.servers.Server;
 
+import lombok.SneakyThrows;
+
 @Path("/swagger")
 @Singleton
 @PublicApi
@@ -30,8 +31,9 @@ public class SwaggerWs {
 	private final String swaggerDefinition;
 	private final BasicAuthenticator<String> basicAuthenticator;
 
+    @SneakyThrows
 	@Inject
-	public SwaggerWs(InternalApiAuthenticator apiAuthenticator) throws Exception {
+	public SwaggerWs(InternalApiAuthenticator apiAuthenticator) {
 		// Basic configuration
 		SwaggerConfiguration openApiConfig = new SwaggerConfiguration()
 			.resourcePackages(Set.of("${package}.webservices.api"))
@@ -59,7 +61,7 @@ public class SwaggerWs {
 
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
-	public String get(@Context ContainerRequestContext requestContext) throws JsonProcessingException {
+	public String get(@Context ContainerRequestContext requestContext) {
 		basicAuthenticator.requireAuthentication(requestContext);
 
 		return swaggerDefinition;

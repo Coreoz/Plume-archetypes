@@ -18,6 +18,6 @@ import org.junit.Test;
 public class SampleTest {
     @Test
     public void methodToTest__test_scenario_description() {
-        Assertions.assertThat(1).isEqualTo(1);
+        Assertions.assertThat(1 + 1).isEqualTo(2);
     }
 }
