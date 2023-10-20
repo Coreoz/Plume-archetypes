@@ -76,6 +76,8 @@ These CI configuration files are:
 - Sonar configuration is made in the `sonar-project.properties` file for code quality checks
 - Github CI configuration is made in the `.github` folder
 
+For Github Actions, tokens need to be created for Sonar, see <https://sonarcloud.io/project/overview>
+
 Need to migrate to WAR packaging?
 ----------------------------------
 See the [WAR migration guide](../plume-archetype-querydsl-jersey-guice).
