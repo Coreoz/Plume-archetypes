@@ -44,8 +44,10 @@ To connect to a database, the Plume Querydsl module must be configured:
     1. In the `pom.xml` file, uncomment the lines after `Uncomment to use flyway`. Reference the correct Flyway module if MySQL/MariaDB is not your database
     2. In the `WebApplication` class, uncomment the line `injector.getInstance(DatabaseInitializer.class).setup();`
     3. In the `V1__setup_database.sql` file, insert the SQL code for the first initialization of your database
-    4. In the `TestModule` class, uncomment the line `install(new GuiceDbTestModule());`
-    5. In the `DatabaseInitializer` class, uncomment the code in the `setup()` method
+    4. Add the DataSource module in the Guice configuration class `ApplicationModule`
+       by uncommenting the line `install(new DataSourceModule());`
+    5. In the `TestModule` class, uncomment the line `install(new GuiceDbTestModule());`
+    6. In the `DatabaseInitializer` class, uncomment the code in the `setup()` method
 
 To generate classes corresponding to the database tables,
 you can run the `${package}.db.QuerydslGenerator.main()` method.
@@ -59,7 +61,7 @@ See the detailed documentations:
 - [Plume Querydsl codegen](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl-codegen)
 
 ### Removing database elements
-To completely get rid of the database component:
+If no database is used, it is possible to completely get rid of the database component:
 1. Remove the line `install(new GuiceQuerydslModule());` in the `ApplicationModule` class,
 2. Remove the package `db` in the project,
 3. Remove the dependencies `plume-db-querydsl` and `plume-db-querydsl-codegen` as long as the commented lines in the `pom.xml` file

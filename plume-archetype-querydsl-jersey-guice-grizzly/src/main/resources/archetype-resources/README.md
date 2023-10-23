@@ -4,7 +4,7 @@ ${artifactId}
 Welcome to your [Plume](https://github.com/Coreoz/Plume) project!
 Here are some reminders to get your project up and running.
 
-If you just created the project, you need to have a look at the [finalizing project creation](https://github.com/Coreoz/Plume-archetypes/blob/master/plume-archetype-querydsl-jersey-guice-grizzly#finalizing-project-creation) section in the project Maven Archetype.
+If you just created the project, you should have a look at the [finalizing project creation](https://github.com/Coreoz/Plume-archetypes/blob/master/plume-archetype-querydsl-jersey-guice-grizzly#finalizing-project-creation) section in the project Maven Archetype.
 
 Configuring your IDE
 --------------------
@@ -57,12 +57,12 @@ For further details on `WAR` packaging, see the [Plume Grizzly archetype](https:
 
 Monitoring application
 ----------------------
-Monitoring is available through these two endpoints:
-- `/monitoring/info`: provides information about the application name and version. Additionnal information can be added by providing a configura
+Monitoring is available through these endpoints:
+- `/monitoring/info`: provides information about the application name and version. Additionnal information can be added by providing an object for the configuration key `plm-web-jersey-info`. For example: `plm-web-jersey-info = { info1 = "value 1", info2 = "value 2" }`
 - `/monitoring/health`: provides information about application health
 - `/monitoring/metrics`: provides JVM and custom metrics info. This can be customized in the `MonitoringWs` class where the monitoring endpoints are configured
 
-So by default, when running on localhost, metrics are available on: <http://localhost:8080/monitoring/metrics>
+So by default, when running on localhost, metrics are available on: <http://localhost:8080/api/monitoring/metrics>
 
 These endpoints are protected by Basic access authentication. This is configured in the `application.conf` file
 in the `internal-api.auth-username` and `internal-api.auth-password` keys.
