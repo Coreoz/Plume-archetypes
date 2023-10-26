@@ -21,7 +21,7 @@ public class GrizzlySetup {
 	private static final int DEFAULT_HTTP_PORT = 8080;
 	private static final String DEFAULT_HTTP_HOST = "0.0.0.0";
 
-	public static HttpServer start(ResourceConfig jerseyResourceConfig, String httpPort, String httpHost)
+	public static HttpServer start(ResourceConfig jerseyResourceConfig, String httpPort, String httpHost, Integer httpGrizzlyWorkerThreadsPoolSize)
 			throws IOException {
 		// replace JUL logger (used by Grizzly) by SLF4J logger
 		SLF4JBridgeHandler.removeHandlersForRootLogger();
@@ -39,6 +39,11 @@ public class GrizzlySetup {
 			// else the custom error page generator won't be used
 			false
 		);
+
+        // Worker thread pool configuration
+        if (httpGrizzlyWorkerThreadsPoolSize != null) {
+            httpServer.getListeners().forEach(networkListener -> networkListener.getTransport().getWorkerThreadPoolConfig().setMaxPoolSize(httpGrizzlyWorkerThreadsPoolSize));
+        }
 
 		// minimal error page to avoid leaking server information
 		httpServer.getServerConfiguration().setDefaultErrorPageGenerator(new GrizzlyErrorPageHandler());

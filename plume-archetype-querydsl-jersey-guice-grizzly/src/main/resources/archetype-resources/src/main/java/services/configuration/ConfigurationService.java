@@ -25,4 +25,11 @@ public class ConfigurationService {
 	public String internalApiAuthPassword() {
 		return config.getString("internal-api.auth-password");
 	}
+
+    public Integer httpGrizzlyWorkerThreadsPoolSize() {
+        if (!config.hasPath("http-grizzly.worker-threads-pool-size")) {
+            return null;
+        }
+        return config.getInt("http-grizzly.worker-threads-pool-size");
+    }
 }

@@ -9,6 +9,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import ${package}.guice.ApplicationModule;
 import ${package}.jersey.GrizzlySetup;
+import ${package}.services.configuration.ConfigurationService;
 
 import com.coreoz.plume.jersey.guice.JerseyGuiceFeature;
 import com.google.inject.Guice;
@@ -43,7 +44,8 @@ public class WebApplication {
 			HttpServer httpServer = GrizzlySetup.start(
 				jerseyResourceConfig,
 				System.getProperty("http.port"),
-				System.getProperty("http.address")
+				System.getProperty("http.address"),
+                injector.getInstance(ConfigurationService.class).httpGrizzlyWorkerThreadsPoolSize()
 			);
 
 			// Add a shutdown hook to execute some code when the JVM receive a kill signal before it stops
