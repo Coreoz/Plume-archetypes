@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 
 	<name>Plume archetypes parent</name>
-	<description>Maven archetypes for Plume Framework</description>
+	<description>Maven archetypes for Plume</description>
 	<url>https://github.com/Coreoz/Plume-archetypes</url>
 
 	<organization>

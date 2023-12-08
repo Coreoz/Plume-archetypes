@@ -89,7 +89,7 @@ Deploying to production
 In the default mode, when `mvn package` is executed, all the projects jar files and startup BAT/Bash files are generated.
 These startup files will not work since they are built only for Play Framework.
 This solution is not ideal, eventually we should make our own Maven plugin
-so that the startup files works correctly with Plume Framework.
+so that the startup files works correctly with Plume.
 
 If `appserver` is used, then configure the server with `export SERVER=javazip`,
 it will correctly build and launch the project.

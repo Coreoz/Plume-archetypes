@@ -1,7 +1,7 @@
 Plume Maven archetypes
 ======================
 
-This repository reference Maven archetypes for [Plume Framework](https://github.com/Coreoz/Plume).
+This repository reference Maven archetypes for [Plume](https://github.com/Coreoz/Plume).
 
 
 Archetypes
