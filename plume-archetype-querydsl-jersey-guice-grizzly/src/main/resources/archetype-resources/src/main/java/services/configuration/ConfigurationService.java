@@ -1,7 +1,7 @@
 package ${package}.services.configuration;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 
 import com.typesafe.config.Config;
 

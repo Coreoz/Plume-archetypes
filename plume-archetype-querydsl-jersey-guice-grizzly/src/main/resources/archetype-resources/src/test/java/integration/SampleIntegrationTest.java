@@ -1,7 +1,7 @@
 package ${package}.integration;
 
 import ${package}.guice.TestModule;
-import ${package}.webservices.api.ExampleWs;
+{package}.webservices.api.ExampleWs;
 
 import com.carlosbecker.guice.GuiceModules;
 import com.carlosbecker.guice.GuiceTestRunner;
@@ -9,7 +9,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 /**
  * An integration test sample.

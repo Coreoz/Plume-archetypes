@@ -2,7 +2,7 @@ package ${package}.guice;
 
 import com.coreoz.plume.services.time.TimeProvider;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneId;
