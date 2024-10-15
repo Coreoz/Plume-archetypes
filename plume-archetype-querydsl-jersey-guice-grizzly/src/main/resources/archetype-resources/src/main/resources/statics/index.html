@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <title>${artifactId}</title>
-    </head>
-    <body>
-        API Swagger documentation:
-        <a href="webjars/swagger-ui/4.1.2/index.html?url=/api/swagger">
-            webjars/swagger-ui/4.1.2/index.html?url=/api/swagger
-        </a>
-    </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>${artifactId}</title>
+
+  <script src="webjars/swagger-ui/5.17.14/swagger-ui-bundle.js" charset="UTF-8"></script>
+  <script src="webjars/swagger-ui/5.17.14/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
+  <link rel="stylesheet" href="webjars/swagger-ui/5.17.14/swagger-ui.css">
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script>
+    SwaggerUIBundle({
+      url: "/api/swagger",
+      dom_id: '#swagger-ui',
+      presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset
+      ],
+      layout: "StandaloneLayout"
+    });
+  </script>
+</body>
 </html>
