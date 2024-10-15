@@ -138,14 +138,6 @@
 			<artifactId>jersey-container-grizzly2-http</artifactId>
 		</dependency>
 
-		<!-- to cool down eclipse  -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-
 		<!-- swagger -->
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
