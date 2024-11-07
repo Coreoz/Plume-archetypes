@@ -1,7 +1,7 @@
 package ${package}.integration;
 
 import ${package}.guice.TestModule;
-{package}.webservices.api.ExampleWs;
+import {package}.webservices.api.ExampleWs;
 
 import com.carlosbecker.guice.GuiceModules;
 import com.carlosbecker.guice.GuiceTestRunner;
