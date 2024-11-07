@@ -11,6 +11,7 @@ import ${package}.guice.ApplicationModule;
 import ${package}.jersey.GrizzlySetup;
 import ${package}.services.configuration.ConfigurationService;
 
+import com.coreoz.plume.jersey.grizzly.GrizzlyThreadPoolProbe;
 import com.coreoz.plume.jersey.guice.JerseyGuiceFeature;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -43,6 +44,7 @@ public class WebApplication {
 			// Starts the server
 			HttpServer httpServer = GrizzlySetup.start(
 				jerseyResourceConfig,
+                injector.getInstance(GrizzlyThreadPoolProbe.class),
 				System.getProperty("http.port"),
 				System.getProperty("http.address"),
                 injector.getInstance(ConfigurationService.class).httpGrizzlyWorkerThreadsPoolSize()

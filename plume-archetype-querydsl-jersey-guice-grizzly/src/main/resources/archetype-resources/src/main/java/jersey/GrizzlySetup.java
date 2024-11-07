@@ -12,6 +12,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import com.coreoz.plume.jersey.grizzly.GrizzlyErrorPageHandler;
+import com.coreoz.plume.jersey.grizzly.GrizzlyThreadPoolProbe;
 
 /**
  * Configure and start a Grizzly server
@@ -21,7 +22,7 @@ public class GrizzlySetup {
 	private static final int DEFAULT_HTTP_PORT = 8080;
 	private static final String DEFAULT_HTTP_HOST = "0.0.0.0";
 
-	public static HttpServer start(ResourceConfig jerseyResourceConfig, String httpPort, String httpHost, Integer httpGrizzlyWorkerThreadsPoolSize)
+	public static HttpServer start(ResourceConfig jerseyResourceConfig, GrizzlyThreadPoolProbe grizzlyThreadPoolProbe, String httpPort, String httpHost, Integer httpGrizzlyWorkerThreadsPoolSize)
 			throws IOException {
 		// replace JUL logger (used by Grizzly) by SLF4J logger
 		SLF4JBridgeHandler.removeHandlersForRootLogger();
@@ -40,7 +41,10 @@ public class GrizzlySetup {
 			false
 		);
 
-        // Worker thread pool configuration
+        // thread pool information
+        httpServer.getServerConfiguration().getMonitoringConfig().getThreadPoolConfig().addProbes(grizzlyThreadPoolProbe);
+
+        // worker thread pool configuration
         if (httpGrizzlyWorkerThreadsPoolSize != null) {
             httpServer.getListeners().forEach(networkListener -> networkListener.getTransport().getWorkerThreadPoolConfig().setMaxPoolSize(httpGrizzlyWorkerThreadsPoolSize));
         }

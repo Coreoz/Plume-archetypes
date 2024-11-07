@@ -39,7 +39,9 @@ To connect to a database, the Plume Querydsl module must be configured:
    see the [Plume Querydsl documentation](https://github.com/Coreoz/Plume/tree/master/plume-db-querydsl#configuration) for details
 3. Add the Plume Querydsl module in the Guice configuration class `ApplicationModule`
    by uncommenting the line `install(new GuiceQuerydslModule());`
-4. Add database monitoring in `MonitoringWs` API by uncommenting the line `.registerDatabaseHealthCheck(transactionManager)` and the corresponding one in the constructor for `transactionManager`
+4. Add database monitoring in `MonitoringWs` API by uncommenting the lines:
+   1. `.registerDatabaseHealthCheck(transactionManager)` and the corresponding one in the constructor for `transactionManager`
+   2. `.registerHikariMetrics(hikariDataSource)` and the corresponding one in the constructor for `hikariDataSource`
 5. A good pratice is to use [Flyway](https://github.com/flyway/flyway) for database migration. A usage example can be found in the [Plume Showcase project](https://github.com/Coreoz/Plume-showcase). Flyway is  preconfigured, to enable it:
     1. In the `pom.xml` file, uncomment the lines after `Uncomment to use flyway`. Reference the correct Flyway module if MySQL/MariaDB is not your database
     2. In the `WebApplication` class, uncomment the line `injector.getInstance(DatabaseInitializer.class).setup();`

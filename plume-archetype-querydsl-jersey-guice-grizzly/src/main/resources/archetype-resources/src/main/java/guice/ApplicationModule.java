@@ -19,8 +19,6 @@ public class ApplicationModule extends AbstractModule {
 		install(new GuiceJacksonWithMetricsModule());
 		// Database & Querydsl installation
 		// install(new GuiceQuerydslModule());
-        // Data source exposure for Flyway
-        // install(new DataSourceModule());
 
 		// Prepare Jersey configuration
 		bind(ResourceConfig.class).toProvider(JerseyConfigProvider.class);
