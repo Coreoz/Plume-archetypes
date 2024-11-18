@@ -53,7 +53,7 @@ public class WebApplication {
 			// Add a shutdown hook to execute some code when the JVM receive a kill signal before it stops
 			addShutDownListener(httpServer);
 			// If Plume Scheduler / Wisp is used, uncomment next line
-			// addShutDownListerner(httpServer, injector.getInstance(Scheduler.class));
+			// addShutDownListener(httpServer, injector.getInstance(Scheduler.class));
 
 			logger.info("Server started in {} ms", System.currentTimeMillis() - startTimestamp);
 		} catch (Throwable e) {
