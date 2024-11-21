@@ -1,7 +1,7 @@
 package ${package};
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * A unit test sample.
@@ -16,7 +16,7 @@ import org.junit.Test;
  * Once there are other unit tests in the project, this sample should be deleted.
  */
 public class SampleTest {
-    @Test
+    @org.junit.jupiter.api.Test
     public void methodToTest__test_scenario_description() {
         Assertions.assertThat(1 + 1).isEqualTo(2);
     }

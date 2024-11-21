@@ -1,7 +1,6 @@
 package ${package}.guice;
 
-import ${package}.mocks.MockedClock;
-
+import com.coreoz.plume.mocks.MockedClock;
 import com.google.inject.AbstractModule;
 import com.google.inject.util.Modules;
 
@@ -20,6 +19,7 @@ public class TestModule extends AbstractModule {
 				bind(Clock.class).to(MockedClock.class);
 			}
 		}));
+        // To run database Flyway scripts before running tests
         // install(new GuiceDbTestModule());
 	}
 }
