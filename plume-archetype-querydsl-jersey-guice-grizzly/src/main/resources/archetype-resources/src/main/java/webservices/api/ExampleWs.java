@@ -15,7 +15,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-{package}.services.configuration.ConfigurationService;
+import ${package}.services.configuration.ConfigurationService;
 import ${package}.webservices.api.data.Test;
 
 @Path("/example")

@@ -3,6 +3,7 @@ package ${package}.guice;
 import com.coreoz.plume.mocks.MockedClock;
 import com.google.inject.AbstractModule;
 import com.google.inject.util.Modules;
+import java.time.Clock;
 
 /**
  * The Guice module that will be used for integration tests.

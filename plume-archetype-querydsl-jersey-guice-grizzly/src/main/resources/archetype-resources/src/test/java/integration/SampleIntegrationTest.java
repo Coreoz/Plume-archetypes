@@ -1,7 +1,7 @@
 package ${package}.integration;
 
 import ${package}.guice.TestModule;
-import {package}.webservices.api.ExampleWs;
+import ${package}.webservices.api.ExampleWs;
 
 import com.coreoz.test.GuiceTest;
 import org.assertj.core.api.Assertions;

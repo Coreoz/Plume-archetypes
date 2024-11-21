@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * Once there are other unit tests in the project, this sample should be deleted.
  */
 public class SampleTest {
-    @org.junit.jupiter.api.Test
+    @Test
     public void methodToTest__test_scenario_description() {
         Assertions.assertThat(1 + 1).isEqualTo(2);
     }
