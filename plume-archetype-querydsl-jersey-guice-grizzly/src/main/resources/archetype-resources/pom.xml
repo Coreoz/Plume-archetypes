@@ -24,7 +24,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.13.0</version>
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
@@ -33,7 +33,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.3.1</version>
 				<configuration>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
@@ -41,7 +41,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.4.2</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -85,12 +85,6 @@
 		<dependency>
 			<groupId>org.glassfish.hk2</groupId>
 			<artifactId>guice-bridge</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>guice</artifactId>
-					<groupId>com.google.inject</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -112,7 +106,7 @@
 		 <!--<dependency>
 		 	<groupId>org.mariadb.jdbc</groupId>
 		 	<artifactId>mariadb-java-client</artifactId>
-		 	<version>3.4.1</version>
+		 	<version>3.5.1</version>
 		 </dependency>-->
         <!-- Uncomment to use flyway -->
         <!--<dependency>
@@ -137,6 +131,11 @@
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-grizzly2-http</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+        </dependency>
 
 		<!-- swagger -->
 		<dependency>
