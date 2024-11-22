@@ -13,14 +13,14 @@ Getting started
 ---------------
 1. Create a project with the
 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) with the command:
-`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=4.2.0`
+`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=5.0.0-beta1`
 2. See next section to [finalize project creation](#finalizing-project-creation)
 
 Finalizing project creation
 ---------------------------
 
 ### Java version
-By default Java 17 is used, to use another version, change these lines in the `pom.xml` file:
+By default, Java 17 is used, to use another version, change these lines in the `pom.xml` file:
 ```xml
 <maven.compiler.source>17</maven.compiler.source>
 <maven.compiler.target>17</maven.compiler.target>
@@ -105,7 +105,7 @@ If not there are 3 solutions:
 <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
 	<artifactId>maven-shade-plugin</artifactId>
-	<version>3.1.0</version>
+	<version>3.6.0</version>
 	<configuration>
 		<filters>
 			<filter>
