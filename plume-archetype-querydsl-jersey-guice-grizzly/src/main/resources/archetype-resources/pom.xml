@@ -81,7 +81,7 @@
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
 		</dependency>
-		<!-- allow to use Guice dependency injection in Jersey controllers -->
+        <!-- allow using Guice dependency injection in Jersey controllers -->
 		<dependency>
 			<groupId>org.glassfish.hk2</groupId>
 			<artifactId>guice-bridge</artifactId>
