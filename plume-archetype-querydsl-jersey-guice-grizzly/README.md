@@ -71,7 +71,7 @@ If no database is used, it is possible to completely get rid of the database com
 5. In the configurations files, `src/main/resources/application.conf` and `src/test/resources/application.conf`, remove database configuration
 
 ### Configuring CI
-Continuous integration enables to automatically run all code based tests each time that the code is pushed remotely. It is very useful to avoid making regressions while pushing new code.
+Continuous integration enables to automatically run all code-based tests each time that the code is pushed remotely. It is beneficial to avoid making regressions while pushing new code.
 
 The archetype contains Gitlab and Github configuration files to enable this continuous integration out of the box. After a project is created, the used CI files should be deleted: so if Gitlab is used, Github files should be deleted.
 
@@ -91,12 +91,12 @@ Deploying to production
 In the default mode, when `mvn package` is executed, all the projects jar files and startup BAT/Bash files are generated.
 These startup files will not work since they are built only for Play Framework.
 This solution is not ideal, eventually we should make our own Maven plugin
-so that the startup files works correctly with Plume.
+so that the startup files work correctly with Plume.
 
 If `appserver` is used, then configure the server with `export SERVER=javazip`,
 it will correctly build and launch the project.
 
-If not there are 3 solutions:
+If not, there are three solutions:
 - switch back to the WAR file generation: see the [Plume War archetype](https://github.com/Coreoz/Plume-archetypes/tree/master/plume-archetype-querydsl-jersey-guice),
 - create a maven plugin like `play2-maven-plugin` that produce Plume compatible startup scripts (if you choose this option, please share your work :),
 - replace in the `pom.xml` file the `play2-maven-plugin` and the `maven-jar-plugin` plugins by
