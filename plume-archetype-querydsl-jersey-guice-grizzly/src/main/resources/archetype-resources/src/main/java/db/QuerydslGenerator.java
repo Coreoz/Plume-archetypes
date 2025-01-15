@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Locale;
 
 import com.coreoz.plume.conf.guice.GuiceConfModule;
+import com.coreoz.plume.db.guice.DataSourceModule;
 import com.coreoz.plume.db.querydsl.generation.IdBeanSerializer;
 import com.coreoz.plume.db.transaction.TransactionManager;
 import com.google.inject.Guice;
@@ -68,7 +69,7 @@ public class QuerydslGenerator {
 		exporter.setColumnAnnotations(true);
 		exporter.setConfiguration(configuration);
 
-		Injector injector = Guice.createInjector(new GuiceConfModule());
+		Injector injector = Guice.createInjector(new GuiceConfModule(), new DataSourceModule());
 		injector.getInstance(TransactionManager.class).execute(connection -> {
 			try {
 				exporter.export(connection.getMetaData());
