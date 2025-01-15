@@ -103,12 +103,13 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- PUT YOUR DATABASE CONNECTOR HERE -->
-		 <!--<dependency>
-		 	<groupId>org.mariadb.jdbc</groupId>
-		 	<artifactId>mariadb-java-client</artifactId>
-		 	<version>3.5.1</version>
-		 </dependency>-->
+        <!--<dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.5.1</version>
+        </dependency>-->
         <!-- Uncomment to use flyway -->
+        <!-- For the mapping between Flyway modules and databases, see https://github.com/flyway/flyway/issues/3780 -->
         <!--<dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
