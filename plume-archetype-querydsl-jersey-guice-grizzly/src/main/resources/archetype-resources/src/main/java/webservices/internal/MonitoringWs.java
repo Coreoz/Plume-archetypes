@@ -14,6 +14,8 @@ import jakarta.ws.rs.core.MediaType;
 
 import com.codahale.metrics.Metric;
 import com.coreoz.plume.jersey.grizzly.GrizzlyThreadPoolProbe;
+import com.coreoz.plume.jersey.monitoring.json.JerseyMonitoringObjectMapperProvider;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.coreoz.plume.jersey.monitoring.utils.health.HealthCheckBuilder;
 import com.coreoz.plume.jersey.monitoring.utils.health.beans.HealthStatus;
 import com.coreoz.plume.jersey.monitoring.utils.info.ApplicationInfoProvider;
@@ -21,6 +23,7 @@ import com.coreoz.plume.jersey.monitoring.utils.info.beans.ApplicationInfo;
 import com.coreoz.plume.jersey.monitoring.utils.metrics.MetricsCheckBuilder;
 import com.coreoz.plume.jersey.security.basic.BasicAuthenticator;
 import com.coreoz.plume.jersey.security.permission.PublicApi;
+import lombok.SneakyThrows;
 
 @Path("/monitoring")
 // Authentication is done directly by the web service without any annotation
@@ -31,6 +34,7 @@ public class MonitoringWs {
     private final ApplicationInfo applicationInfo;
     private final Provider<HealthStatus> healthStatus;
     private final Provider<Map<String, Metric>> metrics;
+    private final ObjectWriter metricsJsonWriter;
 
     private final BasicAuthenticator<String> basicAuthenticator;
 
@@ -40,7 +44,8 @@ public class MonitoringWs {
         // TransactionManager transactionManager,
         // HikariDataSource hikariDataSource,
         GrizzlyThreadPoolProbe grizzlyThreadPoolProbe,
-        InternalApiAuthenticator apiAuthenticator
+        InternalApiAuthenticator apiAuthenticator,
+        JerseyMonitoringObjectMapperProvider metricsObjectMapperProvider
     ) {
         this.applicationInfo = applicationInfoProvider.get();
         // Registering health checks
@@ -57,27 +62,33 @@ public class MonitoringWs {
 
         // Require authentication to access monitoring endpoints
         this.basicAuthenticator = apiAuthenticator.get();
+
+        // A specific json writer must be used to serialize metrics objects
+        this.metricsJsonWriter = metricsObjectMapperProvider.get().writer();
     }
 
     @GET
     @Path("/info")
-    public ApplicationInfo info(@Context ContainerRequestContext requestContext) {
+    @SneakyThrows
+    public String info(@Context ContainerRequestContext requestContext) {
         basicAuthenticator.requireAuthentication(requestContext);
-        return this.applicationInfo;
+        return metricsJsonWriter.writeValueAsString(this.applicationInfo);
     }
 
     @GET
     @Path("/health")
-    public HealthStatus health(@Context ContainerRequestContext requestContext) {
+    @SneakyThrows
+    public String health(@Context ContainerRequestContext requestContext) {
         basicAuthenticator.requireAuthentication(requestContext);
-        return this.healthStatus.get();
+        return metricsJsonWriter.writeValueAsString(this.healthStatus.get());
     }
 
     @GET
     @Path("/metrics")
     @Produces(MediaType.APPLICATION_JSON)
-    public Map<String, Metric> metrics(@Context ContainerRequestContext requestContext) {
+    @SneakyThrows
+    public String metrics(@Context ContainerRequestContext requestContext) {
         basicAuthenticator.requireAuthentication(requestContext);
-        return metrics.get();
+        return metricsJsonWriter.writeValueAsString(metrics.get());
     }
 }

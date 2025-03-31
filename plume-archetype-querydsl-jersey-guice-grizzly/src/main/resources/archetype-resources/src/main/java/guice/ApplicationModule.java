@@ -5,7 +5,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import ${package}.jersey.JerseyConfigProvider;
 
 import com.coreoz.plume.conf.guice.GuiceConfModule;
-import com.coreoz.plume.jersey.monitoring.guice.GuiceJacksonWithMetricsModule;
+import com.coreoz.plume.jersey.monitoring.guice.GuiceJacksonModule;
 import com.google.inject.AbstractModule;
 
 /**
@@ -16,7 +16,7 @@ public class ApplicationModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		install(new GuiceConfModule());
-		install(new GuiceJacksonWithMetricsModule());
+		install(new GuiceJacksonModule());
 		// Database & Querydsl installation
 		// install(new GuiceQuerydslModule());
 
