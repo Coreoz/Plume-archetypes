@@ -5,7 +5,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import ${package}.jersey.JerseyConfigProvider;
 
 import com.coreoz.plume.conf.guice.GuiceConfModule;
-import com.coreoz.plume.jersey.monitoring.guice.GuiceJacksonModule;
+import com.coreoz.plume.jersey.guice.GuiceJacksonModule;
 import com.google.inject.AbstractModule;
 
 /**
