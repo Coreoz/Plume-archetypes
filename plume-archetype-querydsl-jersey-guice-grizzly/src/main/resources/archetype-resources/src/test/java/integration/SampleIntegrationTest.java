@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
  * - The H2 in memory database will be created by playing Flyway initialization scripts: these scripts must be correctly setup
  *
  * Integration tests are a great tool to test the whole chain of services with one automated test.
- * Although, to test intensively a function, a unit test is preferred, see {@link ${package}.SampleTest} for an example.
+ * Although, to intensively test a function, a unit test is preferred, see {@link ${package}.SampleTest} for an example.
  *
  * Once there are other integration tests in the project, this sample should be deleted.
  */
