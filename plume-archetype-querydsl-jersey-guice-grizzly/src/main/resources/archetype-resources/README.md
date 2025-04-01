@@ -23,7 +23,7 @@ Database
 --------
 To generate classes corresponding to the database tables,
 you can run the `${package}.db.QuerydslGenerator.main()` method.
-On Intellij the Maven `querydsl-code-generation` must be used for that, so these steps must be folowed in Intellij:
+On Intellij the Maven `querydsl-code-generation` profile must be used for that, so these steps must be followed in Intellij:
 1. Click on the Maven pane on the right
 2. In the Profiles block, select the `querydsl-code-generation` profile
 3. Update the Maven project
