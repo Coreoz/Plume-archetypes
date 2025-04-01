@@ -50,20 +50,24 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<!-- build a zip with all the dependencies and starting scripts -->
-			<plugin>
-				<groupId>com.google.code.play2-maven-plugin</groupId>
-				<artifactId>play2-maven-plugin</artifactId>
-				<version>1.0.0-rc5</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>dist-exploded</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
+            <!-- build a zip with all the dependencies and starting scripts -->
+            <plugin>
+                <groupId>com.google.code.play2-maven-plugin</groupId>
+                <artifactId>play2-maven-plugin</artifactId>
+                <version>1.0.0-rc5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>dist-exploded</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Exclude guava build dependencies from runtime -->
+                    <distDependencyExcludes>com.google.code.findbugs:jsr305,com.google.errorprone:error_prone_annotations,com.google.j2objc:j2objc-annotations,org.checkerframework:checker-qual</distDependencyExcludes>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
