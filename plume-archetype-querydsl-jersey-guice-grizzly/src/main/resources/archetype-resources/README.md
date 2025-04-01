@@ -23,6 +23,11 @@ Database
 --------
 To generate classes corresponding to the database tables,
 you can run the `${package}.db.QuerydslGenerator.main()` method.
+On Intellij the Maven `querydsl-code-generation` must be used for that, so these steps must be folowed in Intellij:
+1. Click on the Maven pane on the right
+2. In the Profiles block, select the `querydsl-code-generation` profile
+3. Update the Maven project
+4. Run the `${package}.db.QuerydslGenerator.main()` method
 
 See the detailed documentations:
 - [Plume Database](https://github.com/Coreoz/Plume/tree/master/plume-db)

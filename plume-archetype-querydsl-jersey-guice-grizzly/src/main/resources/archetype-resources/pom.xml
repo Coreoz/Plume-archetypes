@@ -101,11 +101,19 @@
 			<groupId>com.coreoz</groupId>
 			<artifactId>plume-db-querydsl</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.coreoz</groupId>
-			<artifactId>plume-db-querydsl-codegen</artifactId>
-			<optional>true</optional>
-		</dependency>
+        <!-- Querydsl code generation, using the provided scope to avoid compilation error in the IDE -->
+        <dependency>
+            <groupId>com.coreoz</groupId>
+            <artifactId>plume-db-querydsl-codegen</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <!-- Querydsl codegen still relies on javax.inject for now -->
+                <exclusion>
+                    <artifactId>javax.inject</artifactId>
+                    <groupId>javax.inject</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		<!-- PUT YOUR DATABASE CONNECTOR HERE -->
         <!--<dependency>
             <groupId>org.mariadb.jdbc</groupId>
@@ -164,6 +172,19 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+    <profiles>
+        <!-- Profile for querydsl code generation -->
+        <profile>
+            <id>querydsl-code-generation</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.coreoz</groupId>
+                    <artifactId>plume-db-querydsl-codegen</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
 	<dependencyManagement>
 		<dependencies>
