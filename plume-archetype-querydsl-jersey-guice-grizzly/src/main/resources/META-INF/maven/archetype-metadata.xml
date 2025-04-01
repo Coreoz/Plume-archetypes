@@ -3,7 +3,7 @@
 <archetype-descriptor name="plume-archetype-querydsl-jersey-guice-grizzly">
 	<requiredProperties>
 		<requiredProperty key="plume-dependencies-version">
-			<defaultValue>5.0.0-beta2</defaultValue>
+			<defaultValue>5.0.0-RC1</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 
