@@ -26,12 +26,6 @@ By default, Java 17 is used, to use another version, change these lines in the `
 <maven.compiler.target>17</maven.compiler.target>
 ```
 
-So for example, to use Java 8 instead, you will need to set:
-```xml
-<maven.compiler.source>1.8</maven.compiler.source>
-<maven.compiler.target>1.8</maven.compiler.target>
-```
-
 ### Database configuration
 To connect to a database, the Plume Querydsl module must be configured:
 1. Setup the database connector in the `pom.xml` file (look for the `PUT YOUR DATABASE CONNECTOR HERE` comment
