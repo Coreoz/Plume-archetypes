@@ -13,8 +13,8 @@ Getting started
 ---------------
 1. Create a project with the
 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) with the command:
-`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=5.0.0`
-2. See next section to [finalize project creation](#finalizing-project-creation)
+`mvn archetype:generate -DarchetypeGroupId=com.coreoz -DarchetypeArtifactId=plume-archetype-querydsl-jersey-guice-grizzly -DarchetypeVersion=5.1.0`
+2. See the next section to [finalize project creation](#finalizing-project-creation)
 
 Finalizing project creation
 ---------------------------
