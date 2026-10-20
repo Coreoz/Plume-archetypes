@@ -20,10 +20,10 @@ Finalizing project creation
 ---------------------------
 
 ### Java version
-By default, Java 17 is used, to use another version, change these lines in the `pom.xml` file:
+By default, Java 25 is used, to use another version, change these lines in the `pom.xml` file:
 ```xml
-<maven.compiler.source>17</maven.compiler.source>
-<maven.compiler.target>17</maven.compiler.target>
+<maven.compiler.source>25</maven.compiler.source>
+<maven.compiler.target>25</maven.compiler.target>
 ```
 
 So for example, to use Java 8 instead, you will need to set:

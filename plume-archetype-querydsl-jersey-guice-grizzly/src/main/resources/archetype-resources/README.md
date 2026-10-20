@@ -44,7 +44,7 @@ This documentation is protected by Basic access authentication. This is configur
 in the `internal-api.auth-username` and `internal-api.auth-password` keys.
 
 To access this documentation, start the project
-and go to <http://localhost:8080/webjars/swagger-ui/4.1.2/index.html?url=/api/swagger>.
+and go to <http://localhost:8080/webjars/swagger-ui/5.33.2/index.html?url=/api/swagger>.
 
 Deploying to production
 -----------------------

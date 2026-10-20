@@ -2,23 +2,21 @@ package ${package}.db;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.util.Locale;
 
 import com.coreoz.plume.conf.guice.GuiceConfModule;
 import com.coreoz.plume.db.querydsl.generation.IdBeanSerializer;
 import com.coreoz.plume.db.transaction.TransactionManager;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.querydsl.codegen.EntityType;
 import com.querydsl.sql.Configuration;
 import com.querydsl.sql.SQLTemplates;
-import com.querydsl.sql.codegen.DefaultNamingStrategy;
 import com.querydsl.sql.codegen.MetaDataExporter;
-import com.querydsl.sql.types.JSR310InstantType;
-import com.querydsl.sql.types.JSR310LocalDateType;
-import com.querydsl.sql.types.JSR310LocalTimeType;
-import com.querydsl.sql.types.JSR310ZonedDateTimeType;
+import com.querydsl.sql.codegen.MetadataExporterConfigImpl;
+import com.querydsl.sql.types.InstantType;
+import com.querydsl.sql.types.LocalDateType;
+import com.querydsl.sql.types.LocalTimeType;
 import com.querydsl.sql.types.Type;
+import com.querydsl.sql.types.ZonedDateTimeType;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -30,42 +28,30 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class QuerydslGenerator {
-	private static final String TABLES_PREFIX = "plm_";
+	static final String TABLES_PREFIX = "plm_";
 
 	public static void main(String... args) {
 		Configuration configuration = new Configuration(SQLTemplates.DEFAULT);
-		configuration.register(classType(JSR310InstantType.class));
-		configuration.register(classType(JSR310LocalDateType.class));
-		configuration.register(classType(JSR310LocalTimeType.class));
-		configuration.register(classType(JSR310ZonedDateTimeType.class));
+		configuration.register(classType(InstantType.class));
+		configuration.register(classType(LocalDateType.class));
+		configuration.register(classType(LocalTimeType.class));
+		configuration.register(classType(ZonedDateTimeType.class));
 		configuration.registerNumeric(1, 0, Boolean.class);
 		configuration.registerNumeric(9, 0, Long.class);
 		configuration.registerNumeric(19, 0, Long.class);
 
-		MetaDataExporter exporter = new MetaDataExporter();
-		exporter.setPackageName("${package}.db.generated");
-		exporter.setTargetFolder(new File("src/main/java"));
-		exporter.setTableNamePattern(TABLES_PREFIX + "%");
-		exporter.setNamingStrategy(new DefaultNamingStrategy() {
-			@Override
-			public String getClassName(String tableName) {
-				// uncomment if you are using plume file
-//				if("plm_file".equalsIgnoreCase(tableName)) {
-//					return FileEntityQuerydsl.class.getName();
-//				}
-				return super.getClassName(tableName.substring(TABLES_PREFIX.length()));
-			}
-
-			@Override
-			public String getDefaultVariableName(EntityType entityType) {
-				String variableName = getClassName(entityType.getData().get("table").toString());
-				return variableName.substring(0, 1).toLowerCase(Locale.ENGLISH) + variableName.substring(1);
-			}
-		});
-		IdBeanSerializer beanSerializer = new IdBeanSerializer().setUseJacksonAnnotation(true);
-		beanSerializer.setAddToString(true);
-		exporter.setBeanSerializer(beanSerializer);
-		exporter.setColumnAnnotations(true);
+		MetadataExporterConfigImpl exporterConfig = new MetadataExporterConfigImpl();
+		exporterConfig.setPackageName("${package}.db.generated");
+		exporterConfig.setTargetFolder(new File("src/main/java"));
+		exporterConfig.setTableNamePattern(TABLES_PREFIX + "%");
+		exporterConfig.setNamingStrategyClass(ProjectNamingStrategy.class);
+		exporterConfig.setBeanSerializerClass(IdBeanSerializer.class);
+		exporterConfig.setExportBeans(true);
+		exporterConfig.setBeanPrintSupertype(true);
+		exporterConfig.setBeanAddToString(true);
+		exporterConfig.setColumnAnnotations(true);
+		exporterConfig.setGeneratedAnnotationClass("jakarta.annotation.Generated");
+		MetaDataExporter exporter = new MetaDataExporter(exporterConfig);
 		exporter.setConfiguration(configuration);
 
 		Injector injector = Guice.createInjector(new GuiceConfModule());
@@ -73,13 +59,13 @@ public class QuerydslGenerator {
 			try {
 				exporter.export(connection.getMetaData());
 			} catch (SQLException e) {
-                logger.error("Querydsl database objects generation failed", e);
+				logger.error("Querydsl database objects generation failed", e);
 			}
 		});
 	}
 
-    @SneakyThrows
-    private static Type<?> classType(Class<?> classType) {
-        return (Type<?>) classType.getConstructor().newInstance();
-    }
+	@SneakyThrows
+	private static Type<?> classType(Class<?> classType) {
+		return (Type<?>) classType.getConstructor().newInstance();
+	}
 }

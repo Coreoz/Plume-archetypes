@@ -12,8 +12,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>25</maven.compiler.source>
+		<maven.compiler.target>25</maven.compiler.target>
 
 		<plume-dependencies.version>${plume-dependencies-version}</plume-dependencies.version>
 	</properties>
@@ -28,6 +28,13 @@
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
+					<!-- javac no longer enables annotation processing implicitly since JDK 23 -->
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -80,11 +87,24 @@
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
+			<classifier>classes</classifier>
+		</dependency>
+		<!-- unshaded Guice relies on ASM: required to support Java 25 bytecode -->
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm</artifactId>
 		</dependency>
         <!-- allow using Guice dependency injection in Jersey controllers -->
 		<dependency>
 			<groupId>org.glassfish.hk2</groupId>
 			<artifactId>guice-bridge</artifactId>
+			<exclusions>
+				<!-- the shaded Guice must not be present next to the unshaded `classes` artifact -->
+				<exclusion>
+					<groupId>com.google.inject</groupId>
+					<artifactId>guice</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -106,7 +126,7 @@
 		 <!--<dependency>
 		 	<groupId>org.mariadb.jdbc</groupId>
 		 	<artifactId>mariadb-java-client</artifactId>
-		 	<version>3.5.1</version>
+		 	<version>3.5.10</version>
 		 </dependency>-->
         <!-- Uncomment to use flyway -->
         <!--<dependency>
