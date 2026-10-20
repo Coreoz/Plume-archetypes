@@ -8,8 +8,8 @@ import java.time.Clock;
 /**
  * The Guice module that will be used for integration tests.
  *
- * In this module, it is possible to override the behaviors of some services as it is shown with the {@link TimeProvider}
- * module.
+ * In this module, it is possible to override the behaviors of some services as it is shown with the {@link MockedClock}
+ * clock.
  */
 public class TestModule extends AbstractModule {
 	@Override
